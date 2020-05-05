@@ -11,10 +11,8 @@
 
 using namespace std;
 
-void Move(Tank &name, Board& board, Board& boardMine1,Board& boardMine2, Mine mine, char action);
-void Shot(Board& board, Tank& attack, Tank& defence);
+
 void HealTank(Tank& tank, Heal& heal);
-void MoveMine(Tank& tank, Board& boardMine);
 void CheckShot(Tank& attack, Tank& defence);
 
 
