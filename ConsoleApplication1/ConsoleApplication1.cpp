@@ -19,7 +19,7 @@ void CheckShot(Tank& attack, Tank& defence);
   
 int main()
 {
-	IO io;
+	
 	Tank tank1("Tank1", 100, 6, 10, 1, 1, 1);
 	Tank tank2("Tank2", 100, 6, 10, 2, 2, 2);
 	Mine mine1;
@@ -69,7 +69,7 @@ void HealTank(Tank& tank,Heal &heal)
 	}
 	else 
 	{
-		char move;
+		char move;//переделать используя делегаты,убрать move
 		cout << "Heal you tank? y - yes, n - no" << endl;
 		cin >> move;
 		switch (move)

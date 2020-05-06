@@ -13,7 +13,7 @@ public:
 		char move;
 		board1.ClearBoard();
 		board2.ClearBoard();
-		move = _getch();
+		move = _getch();//перенести в функуию в класс IO
 		switch (move)
 		{
 		case 's':
