@@ -5,31 +5,24 @@ using namespace std;
 #include<time.h> //в этом файле содержитс€ функци€ time
 #include <stdio.h>
 #include <Windows.h>
+#include "Board.h"
 
 class Tank
 {
 private:
-	std::string name;
+	string name;
 	int hp;
 	int damage;
 	int initiative;
 	int ongoingInitiative;
 	int coordinateX;
 	int coordinateY;
-	int color;
+	int playerIndex;//определ€ет какой танк ходит 1 или 2
 public:
 	Tank() //конструктор по умолчанию
-	{
-		name = "Tank";
-		hp = 100;
-		damage = 6;
-		initiative = 10;
-		ongoingInitiative = initiative;
-		coordinateX = 1;
-		coordinateY = 1;
-	}
+	{}
 
-	Tank(std::string name, int hp, int damage,int initiative,int color, int x, int y) //конструктор
+	Tank(string name, int hp, int damage,int initiative,int playerIndex, int x, int y) //конструктор
 	{
 		this->name = name;
 		this->hp = hp;
@@ -38,7 +31,7 @@ public:
 		ongoingInitiative = initiative;
 		coordinateX = x;
 		coordinateY = y;
-		this->color = color;
+		this->playerIndex = playerIndex;
 	}
 
 	void SetHP(int damage) //получение урона танком
@@ -62,7 +55,54 @@ public:
 			hp = 100;
 		}
 	}
-	
+	void MoveDown(Board& board)
+	{
+		if (GetCoordinateX() == board.SIZEBOARD - 1)
+		{
+			board.SetCoordinate(GetCoordinateX(), GetCoordinateY(), 'T');
+		}
+		if (GetCoordinateX() < board.SIZEBOARD - 1)
+		{
+			board.SetCoordinate(GetCoordinateX() + 1, GetCoordinateY(), 'T');
+			SetCoordinateX(GetCoordinateX() + 1);
+		}
+	}
+	void MoveUp(Board& board)
+	{
+		if (GetCoordinateX() == 0)
+		{
+			board.SetCoordinate(GetCoordinateX(), GetCoordinateY(), 'T');
+		}
+		if (GetCoordinateX() > 0)
+		{
+			board.SetCoordinate(GetCoordinateX() - 1, GetCoordinateY(), 'T');
+			SetCoordinateX(GetCoordinateX() - 1);
+		}
+	}
+	void MoveRight(Board& board)
+	{
+		if (GetCoordinateY() == board.SIZEBOARD - 1)
+		{
+			board.SetCoordinate(GetCoordinateX(), GetCoordinateY(), 'T');
+		}
+		if (GetCoordinateY() < board.SIZEBOARD - 1)
+		{
+			board.SetCoordinate(GetCoordinateX(), GetCoordinateY() + 1, 'T');
+			SetCoordinateY(GetCoordinateY() + 1);
+		}
+	}
+	void MoveLeft(Board& board)
+	{
+		if (GetCoordinateY() == 0)
+		{
+			board.SetCoordinate(GetCoordinateX(), GetCoordinateY(), 'T');
+		}
+		if (GetCoordinateY() > 0)
+		{
+			board.SetCoordinate(GetCoordinateX(), GetCoordinateY() - 1, 'T');
+			SetCoordinateY(GetCoordinateY() - 1);
+		}
+	}
 	int GetHP()
 	{
 		return hp;
@@ -110,8 +150,8 @@ public:
 	{	
 		 coordinateY = y;
 	}
-	int GetColor()
+	int GetPlayerIndex()
 	{
-		return color;
+		return playerIndex;
 	}
 };

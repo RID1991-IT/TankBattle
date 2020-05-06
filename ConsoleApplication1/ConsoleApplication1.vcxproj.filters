@@ -35,8 +35,5 @@
     <ClInclude Include="IO.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="MoveTank.h">
-      <Filter>Исходные файлы</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

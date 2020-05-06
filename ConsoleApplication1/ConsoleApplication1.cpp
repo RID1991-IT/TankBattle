@@ -4,7 +4,6 @@
 #include "Mine.h"
 #include "Heal.h"
 #include "IO.h"
-#include "MoveTank.h"
 #include <conio.h>
 #include <stdio.h>
 #include <Windows.h>
@@ -14,14 +13,12 @@ using namespace std;
 
 void HealTank(Tank& tank, Heal& heal);
 void CheckShot(Tank& attack, Tank& defence);
-
-
   
 int main()
 {
 	
-	Tank tank1("Tank1", 100, 6, 10, 1, 1, 1);
-	Tank tank2("Tank2", 100, 6, 10, 2, 2, 2);
+	Tank tank1("_PLayer_1", 100, 6, 10, 1, 1, 1);
+	Tank tank2("_Player_2", 100, 6, 10, 2, 2, 2);
 	Mine mine1;
 	Mine mine2;
 	Heal heal1;
@@ -35,27 +32,19 @@ int main()
 		
 	while (tank1.GetHP() >= 0 && tank2.GetHP() >= 0)
 	{
-		board1.TempBoard(tank1.GetCoordinateX(), tank1.GetCoordinateY(), 'T');
-		board2.TempBoard(tank2.GetCoordinateX(), tank2.GetCoordinateY(), 'T');
-		system("cls");
-		IO::ShowBoard(board1, tank1);
-		IO::ShowBoard(board2, tank2);
-		cout << "S-Down,W-MoveUp,A-left,D-Right" << endl;
-		MoveTank::Move(tank1, tank2, board1, board2);
-		system("cls");
-		MoveTank::CheckMine(boardMine2, tank2, mine1, tank1.GetCoordinateX(), tank1.GetCoordinateY());
-		IO::ShowBoard(board1, tank1);
-		IO::ShowBoard(board2, tank2);
-		Mine::MoveMine(mine1,board1, board2, boardMine1,tank1,tank2,1);
+		//player1 play
+		IO::ShowBoard(board1, tank1, board2, tank2);
+		IO::MoveTank(tank1, tank2, board1, board2);	
+		mine2.CheckMine(boardMine2, tank2, tank1.GetCoordinateX(), tank1.GetCoordinateY());
+		IO::ShowBoard(board1, tank1,board2,tank2);		
+		IO::MoveMine(mine1, board1, board2, boardMine1,tank1,tank2);
 		CheckShot(tank1, tank2);
 		HealTank(tank1, heal1);
-		system("cls");
-		IO::ShowBoard(board1, tank1);
-		IO::ShowBoard(board2, tank2);
-		cout << "S-Down,W-MoveUp,A-left,D-Right" << endl;
-		MoveTank::Move(tank2, tank1, board2, board1);
-		MoveTank::CheckMine(boardMine1, tank1, mine1, tank2.GetCoordinateX(), tank2.GetCoordinateY());
-		Mine::MoveMine(mine1, board1, board2, boardMine2, tank1, tank2,2);
+		//player2 play
+		IO::ShowBoard(board1, tank1, board2, tank2);
+		IO::MoveTank(tank2, tank1, board2, board1);
+		mine1.CheckMine(boardMine1, tank1, tank2.GetCoordinateX(), tank2.GetCoordinateY());
+		IO::MoveMine(mine2, board1, board2, boardMine2, tank1, tank2);
 		CheckShot(tank2, tank1);
 		HealTank(tank2, heal2);
 	}
