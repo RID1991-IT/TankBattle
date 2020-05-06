@@ -58,6 +58,7 @@ int main()
 		Mine::MoveMine(mine1, board1, board2, boardMine2, tank1, tank2,2);
 		CheckShot(tank2, tank1);
 		HealTank(tank2, heal2);
+		cout << "next";
 	}
 }
 
