@@ -11,99 +11,77 @@
 using namespace std;
 
 class IO
-{
-	
+{	
 public:
-    static void ShowBoard(Board& boardPlayer1, Tank& tankPlayer1,Board& boardPlayer2, Tank& tankPlayer2)
-	{   boardPlayer1.ClearBoard();
-	    boardPlayer2.ClearBoard();
-		system("cls");
-		boardPlayer1.TempBoard(tankPlayer1.GetCoordinateX(), tankPlayer1.GetCoordinateY(), 'T');
-		boardPlayer2.TempBoard(tankPlayer2.GetCoordinateX(), tankPlayer2.GetCoordinateY(), 'T');
-        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        cout << "---------" << endl;
-        for (int i = 0; i < boardPlayer1.SIZEBOARD; i++)
-        {
-            cout << "|";
-            for (int j = 0; j < boardPlayer1.SIZEBOARD; j++)
-            {
-                if (boardPlayer1.GetCoordinate(i, j) == 'T' && tankPlayer1.GetPlayerIndex() == 1)
-                {
-                    SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
-                    cout << boardPlayer1.GetCoordinate(i, j);
-                    SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
-                }
-               
-                else if(boardPlayer1.GetCoordinate(i, j) == '*')
-                {
+	static void ShowBoard(Board board, Tank tank)
+	{
 
-                    SetConsoleTextAttribute(hConsole, (WORD)((7 << 4) | 4));
-                    cout << boardPlayer1.GetCoordinate(i, j);
-                    SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
+		board.TempBoard(tank.GetCoordinateX(), tank.GetCoordinateY(), 'T');
+		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+		cout << "---------" << endl;
+		for (int i = 0; i < board.SIZEBOARD; i++)
+		{
+			cout << "|";
+			for (int j = 0; j < board.SIZEBOARD; j++)
+			{
+				if (board.GetCoordinate(i, j) == 'T' && tank.GetPlayerIndex()==1)
+				{
+					SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
+					cout << board.GetCoordinate(i, j);
+					SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
+				}
+				else if (board.GetCoordinate(i, j) == 'T' && tank.GetPlayerIndex() == 2)
+				{
+					SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
+					cout << board.GetCoordinate(i, j);
+					SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
+				}
+				else if (board.GetCoordinate(i, j) == '*')
+				{
+
+					SetConsoleTextAttribute(hConsole, (WORD)((7 << 4) | 4));
+					cout << board.GetCoordinate(i, j);
+					SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
 
 				}
-                else
-                {
-                    cout << boardPlayer1.GetCoordinate(i, j);
-                }
-                cout << "|";
-            }
-            cout << endl;
-            cout << "---------" << endl;
-        }
-
-		 cout << "---------" << endl;
-        for (int i = 0; i < boardPlayer2.SIZEBOARD; i++)
-        {
-            cout << "|";
-            for (int j = 0; j < boardPlayer2.SIZEBOARD; j++)
-            {
-                
-			    if (boardPlayer2.GetCoordinate(i, j) == 'T' && tankPlayer2.GetPlayerIndex() == 2)
-                {
-                    SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
-                    cout << boardPlayer2.GetCoordinate(i, j);
-                    SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
-                }
-                else if(boardPlayer2.GetCoordinate(i, j) == '*')
-                {
-                    SetConsoleTextAttribute(hConsole, (WORD)((7 << 4) | 4));
-                    cout << boardPlayer2.GetCoordinate(i, j);
-                    SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
+				else
+				{
+					cout << board.GetCoordinate(i, j);
 				}
-                else
-                {
-                    cout << boardPlayer2.GetCoordinate(i, j);
-                }
-                cout << "|";
-            }
-            cout << endl;
-            cout << "---------" << endl;
-        }
-		cout << "S-Down,W-MoveUp,A-left,D-Right" << endl;
-
-    }
+				cout << "|";
+			}
+			cout << endl;
+			cout << "---------" << endl;
+		}
+	}
 	static void ShowShot(int damage, Tank tank1, Tank tank2)// для отображения здоровья и полученого урона танка
 	{
 		cout << tank1.GetName() << " Good shot !!!" << endl;
 		cout << "Tank - " << tank2.GetName() << " Have damage - " << damage << " .HP " << tank2.GetName() << "= " << tank2.GetHP() << endl;
 
 	}
-	static void MoveMine(Mine& mine, Board& boardMovedPlayer, Board& boardEnemy, Board& boardMine, Tank& tankMovedPlayer, Tank& tankEnemy)
+	static void MoveMine(Mine& mine, Board& boardMovedPlayer, Board& boardEnemy, Board& boardMine, Tank& tankMovedPlayer, Tank& tankEnemy,int changed)
 	{
 		char move;
 		do
 		{
-			if (tankMovedPlayer.GetPlayerIndex()==1)
+			system("cls");
+			if (changed == 1)
 			{
+				boardEnemy.ClearBoard();
+				boardEnemy.TempBoard(tankEnemy.GetCoordinateX(), tankEnemy.GetCoordinateY(), 'T');
 				boardEnemy.TempBoard(mine.GetCoordinateX(), mine.GetCoordinateY(), '*');
 			}
-			else if (tankMovedPlayer.GetPlayerIndex()==2)
+			else if (changed == 2)
 			{
+				boardMovedPlayer.ClearBoard();
+				boardMovedPlayer.TempBoard(tankMovedPlayer.GetCoordinateX(), tankMovedPlayer.GetCoordinateY(), 'T');
 				boardMovedPlayer.TempBoard(mine.GetCoordinateX(), mine.GetCoordinateY(), '*');
 			}
-			ShowBoard(boardMovedPlayer, tankMovedPlayer, boardEnemy, tankEnemy);
-			if (tankMovedPlayer.GetPlayerIndex()==1)
+			IO::ShowBoard(boardMovedPlayer, tankMovedPlayer);
+			IO::ShowBoard(boardEnemy, tankEnemy);
+			
+			if (changed==1)
 			{
 				move = _getch();
 				switch (move)
@@ -124,7 +102,7 @@ public:
 					boardMine.SetCoordinate(mine.GetCoordinateX(), mine.GetCoordinateY(), '*');
 				}
 			}
-			else if (tankMovedPlayer.GetPlayerIndex() == 2)
+			else if (changed == 2)
 			{
 				move = _getch();
 				switch (move)
@@ -150,8 +128,6 @@ public:
 	static void MoveTank(Tank& tank1,Tank& tank2, Board& board1,Board& board2)//функция для отображения движения танка
 		{
 			char move;
-			board1.ClearBoard();
-			board2.ClearBoard();
 			move = _getch();
 			switch (move)
 			{
@@ -169,9 +145,46 @@ public:
 				break;
 			}
 		}
+	static void OkrasLogoTank(char logo[][100]) {// цвет логотипа
+		HANDLE consoleOutput;
+		consoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 
-	/*static void ShowMineStat(Tank tank, Mine mine)
+		for (int i = 0; i < 13; i++) {
+			if (i % 2 == 0) {
+				SetConsoleTextAttribute(consoleOutput, 12); //Перед строкой для выделения текста цветом 
+				cout << "\t" << logo[i] << endl;
+				SetConsoleTextAttribute(consoleOutput, 15); //Возвращаем назад цвет
+			}
+			else {
+				SetConsoleTextAttribute(consoleOutput, 10); //Перед строкой для выделения текста цветом
+				cout << "\t" << logo[i] << endl;
+				SetConsoleTextAttribute(consoleOutput, 15); //Возвращаем назад цвет
+			}
+		}
+	}
+
+	static void LogoTank() { // Логотип
+		char Logo[15][100] = {
+			" #######     ###        ##      ##   ##   ##           #############                         ",
+			"   ##      ##   ##     # ##    ##   ##  ##           ####################################### ",
+			"  ##     ## ### ##    ##  ##  ##   ## ##            ##################                       ",
+			" ##    ## ##### ##   ##    # ##   ##   ##       ###########################                  ",
+			"##   ##         ##  ##      ##   ##     ##    #################################              ",
+			"                                             #***O*******O*******O*******O****#              ",
+			"                                              #***O*****O*******O*******O****#               ",
+			"                                               ##############################                ",
+			"                    ######          ###     #######  ##                                      ",
+			"                   ##    ##       ##   ##     ##    ##                                       ",
+			"                  ########      ## ### ##    ##    ##                                        ",
+			"                 ##      ##   ## ##### ##   ##    ##                                         ",
+			"                ##########  ##         ##  ##    ########                                    ",
+		};
+		OkrasLogoTank(Logo);
+	}
+
+	static void ShowMineStat(Tank tank, Mine mine)
     {
 		cout << "Tank - " << tank.GetName() << " Have damage - " << mine.GetDamageMine() << " By mine!!! " << " HP " << tank.GetName() << " = " << tank.GetHP() << endl;
-	}*/
+		system("pause");
+	}
 };

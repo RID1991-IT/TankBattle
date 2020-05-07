@@ -100,16 +100,18 @@ public:
 			SetCoordinateMineY(GetCoordinateY() - 1);
 		}
 	}
-
-	void CheckMine(Board& boardDefenceMine, Tank& tankDefence, int x, int y)
+	bool CheckMine(Board& boardDefenceMine, Tank& tankDefence, int x, int y)
 	{
 		
 		if (boardDefenceMine.GetCoordinate(x, y) == '*')
 		{
 			tankDefence.SetHP(GetDamageMine());
 			boardDefenceMine.SetCoordinate(x, y, ' ');
-			//cout << "Tank - " << tankDefence.GetName() << " Have damage - " << GetDamageMine() << " By mine!!! " << " HP " << tankDefence.GetName() << " = " << tankDefence.GetHP() << endl;
-			system("pause");
+			return true;
+		} 
+		else
+		{
+			return false;
 		}
 	}
 
