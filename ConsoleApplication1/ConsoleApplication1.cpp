@@ -76,18 +76,7 @@ int main()
 		} 
 		IO::MoveMine(mine1, board1, board2, boardMine1,tank1,tank2,tank2.GetPlayerIndex());
 		CheckShot(tank2, tank1);
-		//HealTank(tank2, heal2);
-		/*board1.ClearBoard();
-		board2.ClearBoard();
-		IO::ShowBoard(board1, tank1, board2, tank2);
-		IO::MoveTank(tank2, tank1, board2, board1);
-		board1.ClearBoard();
-		board2.ClearBoard();
-		mine1.CheckMine(boardMine1, tank1, tank2.GetCoordinateX(), tank2.GetCoordinateY());
-		IO::ShowBoard(board1, tank1, board2, tank2);
-		IO::MoveMine(mine2, board1, board2, boardMine2, tank2, tank1);
-		CheckShot(tank2, tank1);
-		HealTank(tank2, heal2);*/
+	
 	}
 }
 
