@@ -17,10 +17,10 @@ public:
 
 		board.TempBoard(tank.GetCoordinateX(), tank.GetCoordinateY(), 'T');
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        cout << "\t\t---------" << endl;
+        cout << "|\t\t---------\t\t|" << endl;
 		for (int i = 0; i < board.SIZEBOARD; i++)
 		{
-			cout << "|\t";
+			cout << "|\t\t|";
 			for (int j = 0; j < board.SIZEBOARD; j++)
 			{
 				if (board.GetCoordinate(i, j) == 'T' && tank.GetPlayerIndex() == 1)
@@ -55,7 +55,7 @@ public:
 			}
 			cout << "\t\t|";
 			cout << "\n";
-			cout <<"\t\t ---------" << "\n";
+			cout <<"|\t\t---------\t\t|" << "\n";
 		}
 	}
 	static void ShowShot(int damage, Tank tank1, Tank tank2)// для отображения здоровья и полученого урона танка
@@ -89,19 +89,22 @@ public:
 		
 		//IO::ShowBoard(boardMovedPlayer, tankMovedPlayer);
 		//IO::ShowBoard(boardEnemy, tankEnemy);
-			cout << "__________________________________________" << endl;
-		    cout << "|                                        |" << endl;
-				SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
-				cout << "\tPlayer name - " << tankMovedPlayer.GetName(); cout << "  HP =" << tankMovedPlayer.GetHP() << endl;
-				SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));cout << "|";		
-				IO::ShowBoard(boardMovedPlayer, tankMovedPlayer);
-				IO::ShowBoard(boardEnemy, tankEnemy);
-				SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
-				cout << "\tPlayer name - " << tankEnemy.GetName(); cout << "  HP =" << tankEnemy.GetHP() << endl;
-				SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));cout << "|";
+			cout << "_________________________________________" << endl;
+			cout << "|                                       |" << endl;
+			cout << "|     ";
+			SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
+			cout << "Player name - " << tankMovedPlayer.GetName(); cout << "  HP =" << tankMovedPlayer.GetHP();
+			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "  |" << endl;
+			IO::ShowBoard(boardMovedPlayer, tankMovedPlayer);
+			IO::ShowBoard(boardEnemy, tankEnemy);
+			cout << "|     ";
+			SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
+			cout << "Player name - " << tankEnemy.GetName(); cout << "  HP =" << tankEnemy.GetHP();
+			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "  |" << endl;
+			cout << "|_______________________________________|" << endl;
 			
-		cout << "      _                                     " << endl;
-		cout << "     |W|                                     "                                     << endl;
+		cout << "      _                                      " << endl;
+		cout << "     |W|                                      "<< endl;
 		cout << "   -------              -                    " << endl;
 		cout << "   |A|D|S| - to MOVIE  |M| - Chek your MINE  " <<endl;
 		cout << "   -------              -                    " << endl;
@@ -223,19 +226,19 @@ public:
 		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 		board1.ClearBoard();
 		board2.ClearBoard();
-		cout << "__________________________________________" << endl;
-		cout << "|                                        |" << endl;
-         cout<< "|                                        |";
+		cout << "_________________________________________" << endl;
+		cout << "|                                       |" << endl;
+		cout << "|     ";
 		SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
-		cout << "\tPlayer name - " << tank1.GetName(); cout << "  HP = " << tank1.GetHP() << endl;
-		cout << "\t  Inicative = " << tank1.GetOngoingIniciative() << endl;
-		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "|";
+		cout << "Player name - " << tank1.GetName(); cout << "  HP =" << tank1.GetHP();
+		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "  |" << endl;
 		IO::ShowBoard(board1, tank1);
 		IO::ShowBoard(board2, tank2);
+		cout << "|     ";
 		SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
-		cout << "|\tPlayer name - " << tank2.GetName(); cout << "  HP = " << tank2.GetHP() << endl;
-		cout << "\t  Inicative = "  << tank2.GetOngoingIniciative() << endl;
-		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));cout << "|";
+		cout << "Player name - " << tank2.GetName(); cout << "  HP =" << tank2.GetHP() ;
+		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "  |" << endl;
+		cout << "|_______________________________________|" << endl;
 		cout << "      _                                 " << endl;
 		cout << "     |W|                                " << endl;
 		cout << "   -------             -----            " << endl;
