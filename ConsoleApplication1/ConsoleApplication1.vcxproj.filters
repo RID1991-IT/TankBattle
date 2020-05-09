@@ -33,7 +33,7 @@
       <Filter>Исходные файлы</Filter>
     </ClInclude>
     <ClInclude Include="IO.h">
-      <Filter>Исходные файлы</Filter>
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
