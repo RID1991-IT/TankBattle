@@ -121,7 +121,43 @@ public:
 			return probability;
 		}
 	}
-	
+	static int CheckInitiative(Tank& tank1, Tank& tank2)
+	{
+		int movedTankIndex;
+		do {
+			if (tank1.ongoingInitiative >= 20 && tank2.ongoingInitiative >= 20) // если у обоих игроков инициатива достигла значения хода
+			{
+				srand(time(0));
+				movedTankIndex = 1 + rand() % 2; // рандомно определяем какой игрок пойдёт
+				if (movedTankIndex == 1) //если честь выпала первому игроку, то обнуляем его инифиативу
+				{
+					tank1.ongoingInitiative -= 20;
+				}
+				else if (movedTankIndex == 2) // если второму, то его инициативу обнуляем
+				{
+					tank2.ongoingInitiative -= 20;
+				}
+				return movedTankIndex;
+				break;
+			}
+			else if (tank1.ongoingInitiative >= 20) //тут аналогично - если первый будет ходить, то у него значение обнуляется
+			{
+				tank1.ongoingInitiative -= 20;
+				movedTankIndex = 1;
+				return movedTankIndex;
+				break;
+			}
+			else if (tank2.ongoingInitiative >= 20) // ну и со вторым так же
+			{
+				tank2.ongoingInitiative -= 20;
+				movedTankIndex = 2;
+				return movedTankIndex;
+				break;
+			}
+			tank1.ongoingInitiative += tank1.initiative; // рост инифиативы игроков, проходит в конце цикла
+			tank2.ongoingInitiative += tank2.initiative; // вдруг кто-то из игроков уже готов ходить, что бы всё было по-честному
+		} while (tank1.ongoingInitiative != 20 && tank2.ongoingInitiative != 20);
+	}
 	string GetName()
 	{
 		return name;
