@@ -40,7 +40,7 @@ public:
 				else if (board.GetCoordinate(i, j) == '*')
 				{
 
-					SetConsoleTextAttribute(hConsole, (WORD)((7 << 4) | 4));
+					SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
 					cout << board.GetCoordinate(i, j);
 					SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
 					cout << "|";
@@ -48,7 +48,9 @@ public:
 				}
 				else
 				{
+					SetConsoleTextAttribute(hConsole, (WORD)((15<< 4) | 4));
 					cout << board.GetCoordinate(i, j);
+					SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
 					cout << "|";
 				}
 			
