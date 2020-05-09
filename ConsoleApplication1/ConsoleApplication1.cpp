@@ -39,6 +39,7 @@ int main()
 		if (movedTank == 1)
 		{
 			//player1 play
+			
 			IO::Interface(board1, board2, tank1, tank2);
 			IO::MoveTank(tank1, tank2, board1, board2);
 			IO::Interface(board1, board2, tank1, tank2);

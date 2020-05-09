@@ -17,10 +17,10 @@ public:
 
 		board.TempBoard(tank.GetCoordinateX(), tank.GetCoordinateY(), 'T');
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        cout << "|\t\t---------\t\t|" << endl;
+        cout << "\t\t\t|\t\t---------\t\t|" << endl;
 		for (int i = 0; i < board.SIZEBOARD; i++)
 		{
-			cout << "|\t\t|";
+			cout << "\t\t\t|\t\t|";
 			for (int j = 0; j < board.SIZEBOARD; j++)
 			{
 				if (board.GetCoordinate(i, j) == 'T' && tank.GetPlayerIndex() == 1)
@@ -57,7 +57,7 @@ public:
 			}
 			cout << "\t\t|";
 			cout << "\n";
-			cout <<"|\t\t---------\t\t|" << "\n";
+			cout <<"\t\t\t|\t\t---------\t\t|" << "\n";
 		}
 	}
 	static void ShowShot(int damage, Tank tank1, Tank tank2)// для отображения здоровья и полученого урона танка
@@ -91,23 +91,23 @@ public:
 		
 		//IO::ShowBoard(boardMovedPlayer, tankMovedPlayer);
 		//IO::ShowBoard(boardEnemy, tankEnemy);
-			cout << "_________________________________________" << endl;
-			cout << "|                                       |" << endl;
-			cout << "|     ";
+			cout << "\t_________________________________________" << endl;
+			cout << "\t|                                       |" << endl;
+			cout << "\t|     ";
 			SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
 			cout << "Player name - " << tankMovedPlayer.GetName(); cout << "  HP =" << tankMovedPlayer.GetHP();
 			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "  |" << endl;
 			IO::ShowBoard(boardMovedPlayer, tankMovedPlayer);
 			IO::ShowBoard(boardEnemy, tankEnemy);
-			cout << "|     ";
+			cout << "\t|     ";
 			SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
 			cout << "Player name - " << tankEnemy.GetName(); cout << "  HP =" << tankEnemy.GetHP();
 			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "  |" << endl;
-			cout << "|_______________________________________|" << endl;
+			cout << "\t|_______________________________________|" << endl;
 			
-		cout << "      _                                      " << endl;
+		cout << "      _                                     " << endl;
 		cout << "     |W|                                      "<< endl;
-		cout << "   -------              -                    " << endl;
+		cout << "   _______              _                    " << endl;
 		cout << "   |A|D|S| - to MOVIE  |M| - Chek your MINE  " <<endl;
 		cout << "   -------              -                    " << endl;
 		
@@ -225,30 +225,31 @@ public:
 	static void Interface(Board board1,Board board2,Tank tank1,Tank tank2)
 	{
 		system("cls");
+		cout << "\n" << endl;
+		LogoTank();
+		cout << "\n" << endl;
 		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 		board1.ClearBoard();
 		board2.ClearBoard();
-		cout << "_________________________________________" << endl;
-		cout << "|                                       |" << endl;
-		cout << "|     ";
+		cout << "\t\t\t_________________________________________" << endl;
+		cout << "\t\t\t|                                       |" << endl;
+		cout << "\t\t\t|     ";
 		SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
 		cout << "Player name - " << tank1.GetName(); cout << "  HP =" << tank1.GetHP();
 		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "  |" << endl;
 		IO::ShowBoard(board1, tank1);
 		IO::ShowBoard(board2, tank2);
-		cout << "|     ";
+		cout << "\t\t\t|     ";
 		SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
 		cout << "Player name - " << tank2.GetName(); cout << "  HP =" << tank2.GetHP() ;
 		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "  |" << endl;
-		cout << "|_______________________________________|" << endl;
-		cout << "      _                                 " << endl;
-		cout << "     |W|                                " << endl;
-		cout << "   -------             -----            " << endl;
-		cout << "   |A|D|S| - to MOVIE |SPACE| - to SHOT|" <<endl;
-		cout << "   -------             -----            " << endl;
-		cout << "   -                     - "              << endl;
-		cout << "  |M| - Chek your MINE  |H| - to HEAL"    <<endl;
-		cout << "   -                     - "              << endl;
+		cout << "\t\t\t|_______________________________________|" << endl;
+		cout << "\t      _                                 " << endl;
+		cout << "\t     |W|                                " << endl;
+		cout << "\t   _______             _____             _                     _             "<< endl;
+		cout << "\t   |A|D|S| - to MOVIE |SPACE| - to SHOT |M| - Chek your MINE  |H| - to HEAL" <<endl;
+		cout << "\t   -------             -----             -                     -            "<< endl;
+
 
 		
 
