@@ -36,24 +36,28 @@ int main()
 
 	IO::LogoTank();
 	system("pause");
-	
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 	char action;
 
 	while (tank1.GetHP() >= 0 && tank2.GetHP() >= 0)
 	{
 		movedTank = Tank::CheckInitiative(tank1, tank2);
-		if (movedTank == 1)
+
+
+		//player1 play
+		for (int i = 0; i < 3; i++)
 		{
-			//player1 play
-			
-			IO::Interface(board1, board2, tank1, tank2);
-			cout << "Player 1 move" << endl;
-			
+			IO::Interface2(board1, board2, tank1, tank2);
+			SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
+			cout << "\t\t\t\t\tPlayer 1 move" << endl;
+			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
 			action = _getch();
 			switch (action)
 			{
-			case 'a':
+
+			case 13:
+				IO::Interface(board1, board2, tank1, tank2);
 				IO::MoveTank(tank1, tank2, board1, board2);
 				IO::Interface(board1, board2, tank1, tank2);
 				if (mine2.CheckMine(boardMine1, tank1, tank1.GetCoordinateX(), tank1.GetCoordinateY()) == true)
@@ -67,30 +71,54 @@ int main()
 			case 'h':
 				HealTank(tank1, heal1);
 				break;
-			case 'p':
+			case 32:
 				CheckShot(tank1, tank2);
 				break;
 			default:
 				break;
 			}
-			
 		}
-		else if (movedTank == 2)
-		{//player2 play
-			//
-			//IO::Interface(board1, board2, tank1, tank2);
-			//cout << "Player 2 move" << endl;
-			//IO::MoveTank(tank2, tank1, board2, board1);
-			//IO::Interface(board1, board2, tank1, tank2);
-			//if (mine2.CheckMine(boardMine2, tank2, tank2.GetCoordinateX(), tank2.GetCoordinateY()) == true)
-			//{
-			//	IO::ShowMineStat(tank2, mine1);
-			//}
-			//IO::MoveMine(mine1, board1, board2, boardMine1, tank1, tank2, tank2.GetPlayerIndex());
-			//CheckShot(tank2, tank1);
-			//
+	
+	//player2 play
+		for (int i = 0; i < 3; i++)
+		{
+			IO::Interface2(board1, board2, tank1, tank2);
+			SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
+			cout << "\t\t\t\t\tPlayer 2 move" << endl;
+			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
+			action = _getch();
+			switch (action)
+			{
+			case 13:
+				IO::Interface(board1, board2, tank1, tank2);
+				IO::MoveTank(tank2, tank1, board2, board1);
+				IO::Interface(board1, board2, tank1, tank2);
+				if (mine2.CheckMine(boardMine2, tank2, tank2.GetCoordinateX(), tank2.GetCoordinateY()) == true)
+				{
+					IO::ShowMineStat(tank2, mine1);
+				}
+				break;
+			case 'm':
+				IO::MoveMine(mine1, board1, board2, boardMine1, tank1, tank2, tank2.GetPlayerIndex());
+				break;
+			case 'h':
+				HealTank(tank2, heal2);
+				break;
+			case 32:
+				CheckShot(tank2, tank1);
+				break;
+			default:
+				break;
+			}
+
+
 		}
 	}
+
+
+
+
+	
 }
 
 void HealTank(Tank& tank,Heal &heal)

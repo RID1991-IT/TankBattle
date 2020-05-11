@@ -250,14 +250,37 @@ public:
 		cout << "\t\t\t|_______________________________________|" << endl;
 		cout << "\t      _                                 " << endl;
 		cout << "\t     |W|                                " << endl;
-		cout << "\t   _______             _____             _                     _             "<< endl;
-		cout << "\t   |A|D|S| - to MOVIE |SPACE| - to SHOT |M| - Chek your MINE  |H| - to HEAL" <<endl;
-		cout << "\t   -------             -----             -                     -            "<< endl;
-
-
-		
-
-
-
+		cout << "\t   _______           "<< endl;
+		cout << "\t   |A|D|S| - to MOVE" <<endl;
+		cout << "\t   -------           "<< endl;
 	}
+
+	static void Interface2(Board board1, Board board2, Tank tank1, Tank tank2)
+	{
+		system("cls");
+		cout << "\n" << endl;
+		LogoTank();
+		cout << "\n" << endl;
+		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+		board1.ClearBoard();
+		board2.ClearBoard();
+		cout << "\t\t\t_________________________________________" << endl;
+		cout << "\t\t\t|                                       |" << endl;
+		cout << "\t\t\t|     ";
+		SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
+		cout << "Player name - " << tank1.GetName(); cout << "  HP =" << tank1.GetHP();
+		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "  |" << endl;
+		IO::ShowBoard(board1, tank1);
+		IO::ShowBoard(board2, tank2);
+		cout << "\t\t\t|     ";
+		SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
+		cout << "Player name - " << tank2.GetName(); cout << "  HP =" << tank2.GetHP();
+		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "  |" << endl;
+		cout << "\t\t\t|_______________________________________|" << endl;
+		
+		cout << "\t   _____            _____             _                     _             " << endl;
+		cout << "\t   ENTER- to MOVIE |SPACE| - to SHOT |M| - Chek your MINE  |H| - to HEAL" << endl;
+		cout << "\t   -----            -----             -                     -            " << endl;
+	}
+
 };
