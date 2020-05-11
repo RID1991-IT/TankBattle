@@ -16,7 +16,8 @@ void CheckShot(Tank& attack, Tank& defence);
   
 int main()
 {
-	
+	system("title TANK BATTLE");
+
 	Tank tank1("_PLayer_1", 100, 6, 10, 1, 1, 1);
 	Tank tank2("_Player_2", 100, 6, 10, 2, 2, 2);
 	Mine mine1;
@@ -28,11 +29,17 @@ int main()
 	Board boardMine1;
 	Board boardMine2;
 	int movedTank;
+	HWND hwnd;
+	char Title[1024];
+	hwnd = GetConsoleWindow();
+	MoveWindow(hwnd, 500, 50, 850, 900, TRUE);//xnew,ynew,wnew,hnew -новые положение x,y, ширина и высота
+
 	IO::LogoTank();
 	system("pause");
 	
-	char move;
-		
+
+	char action;
+
 	while (tank1.GetHP() >= 0 && tank2.GetHP() >= 0)
 	{
 		movedTank = Tank::CheckInitiative(tank1, tank2);
@@ -41,28 +48,47 @@ int main()
 			//player1 play
 			
 			IO::Interface(board1, board2, tank1, tank2);
-			IO::MoveTank(tank1, tank2, board1, board2);
-			IO::Interface(board1, board2, tank1, tank2);
-			if (mine2.CheckMine(boardMine1, tank1, tank1.GetCoordinateX(), tank1.GetCoordinateY()) == true)
+			cout << "Player 1 move" << endl;
+			
+			action = _getch();
+			switch (action)
 			{
-				IO::ShowMineStat(tank1, mine1);
+			case 'a':
+				IO::MoveTank(tank1, tank2, board1, board2);
+				IO::Interface(board1, board2, tank1, tank2);
+				if (mine2.CheckMine(boardMine1, tank1, tank1.GetCoordinateX(), tank1.GetCoordinateY()) == true)
+				{
+					IO::ShowMineStat(tank1, mine1);
+				}
+				break;
+			case 'm':
+				IO::MoveMine(mine1, board1, board2, boardMine2, tank1, tank2, tank1.GetPlayerIndex());
+				break;
+			case 'h':
+				HealTank(tank1, heal1);
+				break;
+			case 'p':
+				CheckShot(tank1, tank2);
+				break;
+			default:
+				break;
 			}
-			IO::MoveMine(mine1, board1, board2, boardMine2, tank1, tank2, tank1.GetPlayerIndex());
-			CheckShot(tank1, tank2);
-			//HealTank(tank1, heal1);
+			
 		}
 		else if (movedTank == 2)
-		{
-			//player2 play
-			IO::Interface(board1, board2, tank1, tank2);
-			IO::MoveTank(tank2, tank1, board2, board1);
-			IO::Interface(board1, board2, tank1, tank2);
-			if (mine2.CheckMine(boardMine2, tank2, tank2.GetCoordinateX(), tank2.GetCoordinateY()) == true)
-			{
-				IO::ShowMineStat(tank2, mine1);
-			}
-			IO::MoveMine(mine1, board1, board2, boardMine1, tank1, tank2, tank2.GetPlayerIndex());
-			CheckShot(tank2, tank1);
+		{//player2 play
+			//
+			//IO::Interface(board1, board2, tank1, tank2);
+			//cout << "Player 2 move" << endl;
+			//IO::MoveTank(tank2, tank1, board2, board1);
+			//IO::Interface(board1, board2, tank1, tank2);
+			//if (mine2.CheckMine(boardMine2, tank2, tank2.GetCoordinateX(), tank2.GetCoordinateY()) == true)
+			//{
+			//	IO::ShowMineStat(tank2, mine1);
+			//}
+			//IO::MoveMine(mine1, board1, board2, boardMine1, tank1, tank2, tank2.GetPlayerIndex());
+			//CheckShot(tank2, tank1);
+			//
 		}
 	}
 }

@@ -91,25 +91,29 @@ public:
 		
 		//IO::ShowBoard(boardMovedPlayer, tankMovedPlayer);
 		//IO::ShowBoard(boardEnemy, tankEnemy);
-			cout << "\t_________________________________________" << endl;
-			cout << "\t|                                       |" << endl;
-			cout << "\t|     ";
+			
+			cout << "\n" << endl;
+			LogoTank();
+			cout << "\n" << endl;
+			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+			cout << "\t\t\t_________________________________________" << endl;
+			cout << "\t\t\t|                                       |" << endl;
+			cout << "\t\t\t|     ";
 			SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
 			cout << "Player name - " << tankMovedPlayer.GetName(); cout << "  HP =" << tankMovedPlayer.GetHP();
 			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "  |" << endl;
 			IO::ShowBoard(boardMovedPlayer, tankMovedPlayer);
 			IO::ShowBoard(boardEnemy, tankEnemy);
-			cout << "\t|     ";
+			cout << "\t\t\t|     ";
 			SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
 			cout << "Player name - " << tankEnemy.GetName(); cout << "  HP =" << tankEnemy.GetHP();
 			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "  |" << endl;
-			cout << "\t|_______________________________________|" << endl;
-			
-		cout << "      _                                     " << endl;
-		cout << "     |W|                                      "<< endl;
-		cout << "   _______              _                    " << endl;
-		cout << "   |A|D|S| - to MOVIE  |M| - Chek your MINE  " <<endl;
-		cout << "   -------              -                    " << endl;
+			cout << "\t\t\t|_______________________________________|" << endl;
+			cout << "\t      _                                 " << endl;
+			cout << "\t     |W|                                " << endl;
+			cout << "\t   _______              _                    " << endl;
+			cout << "\t   |A|D|S| - to MOVIE  |M| - Chek your MINE  " << endl;
+			cout << "\t   -------              -                    " << endl;
 		
 
 		
