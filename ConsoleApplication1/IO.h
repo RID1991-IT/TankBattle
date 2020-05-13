@@ -404,8 +404,8 @@ public:
 				LogoRules(1);
 				cout << endl;
 				LogoExit(1);
-				cin >> perehod;
-				if (perehod == 's')
+				perehod = _getch();
+				if (perehod == 's' || perehod == 80)
 				{
 					menuCurs++;
 				}
@@ -421,11 +421,11 @@ public:
 				LogoRules(1);
 				cout << endl;
 				LogoExit(1);
-				cin >> perehod;
-				if (perehod == 's')
+				perehod = _getch();
+				if (perehod == 's' || perehod == 80)
 				{
 					menuCurs++;
-				} else if (perehod == 'w')
+				} else if (perehod == 'w' || perehod == 72)
 				{
 					menuCurs--;
 				}
@@ -441,12 +441,12 @@ public:
 				LogoRules(0);
 				cout << endl;
 				LogoExit(1);
-				cin >> perehod;
-				if (perehod == 's')
+				perehod = _getch();
+				if (perehod == 's' || perehod == 80)
 				{
 					menuCurs++;
 				}
-				else if (perehod == 'w')
+				else if (perehod == 'w' || perehod == 72)
 				{
 					menuCurs--;
 				}
@@ -462,8 +462,8 @@ public:
 				LogoRules(1);
 				cout << endl;
 				LogoExit(0);
-				cin >> perehod;
-				if (perehod == 'w')
+				perehod = _getch();
+				if (perehod == 'w' || perehod == 72)
 				{
 					menuCurs--;
 				}
@@ -471,7 +471,7 @@ public:
 			default:
 				break;
 			}
-		} while (perehod != 'f');
+		} while (perehod != 13);
 		return menuCurs;
 	}
 	
