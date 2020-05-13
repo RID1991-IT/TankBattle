@@ -60,10 +60,47 @@ public:
 			cout <<"\t\t\t|\t\t---------\t\t|" << "\n";
 		}
 	}
-	static void ShowShot(int damage, Tank tank1, Tank tank2)// для отображения здоровья и полученого урона танка
+	static void Interface(Board board1, Board board2, Tank tank1, Tank tank2, int changed, int actionPoints)
 	{
-		cout << tank1.GetName() << " Good shot !!!" << "\n";
-		cout << "Tank - " << tank2.GetName() << " Have damage - " << damage << " .HP " << tank2.GetName() << "= " << tank2.GetHP() << "\n";
+		cout << "\n" << endl;
+		LogoTank();
+		cout << "\n" << endl;
+		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+		cout << "\t\t\t_________________________________________" << endl;
+		cout << "\t\t\t|                                       |" << endl;
+		cout << "\t\t\t|     ";
+		SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
+		cout << "Player name - " << tank1.GetName(); cout << "  HP =" << tank1.GetHP();
+		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "   |" << endl;
+		IO::ShowBoard(board1, tank1);
+		IO::ShowBoard(board2, tank2);
+		cout << "\t\t\t|     ";
+		SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
+		cout << "Player name - " << tank2.GetName(); cout << "  HP =" << tank2.GetHP();
+		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "   |" << endl;
+		cout << "\t\t\t|_______________________________________|" << endl;
+		cout << "\t      _                                 " << endl;
+		cout << "\t     |W|                                " << endl;
+		cout << "\t   _______            _____             _                     _            " << endl;
+		cout << "\t   |A|D|S| - to MOVE |SPACE| - to SHOT |M| - Chek your MINE  |H| - to HEAL " << endl;
+		cout << "\t   -------            -----             -                     -            " << endl;
+		if (changed == 1)
+		{
+			SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
+			cout << "\t\t\t\t\t" << tank1.GetName() << " Move " << endl;
+			cout << "\t\t\t\t   You have -" << actionPoints << " action points " << endl;
+
+			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
+		}
+		else if (changed == 2)
+		{
+			SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
+			cout << "\t\t\t\t\t" << tank2.GetName() << " Move " << endl;
+			cout << "\t\t\t\t   You have -" << actionPoints << " action points " << endl;
+			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
+
+		}
 
 	}
 	static void MoveMine(Mine& mine, Board& boardMovedPlayer, Board& boardEnemy, Board& boardMine, Tank& tankMovedPlayer, Tank& tankEnemy,int changed)
@@ -75,6 +112,7 @@ public:
 			boardEnemy.ClearBoard();
 			boardMovedPlayer.ClearBoard();
 			system("cls");
+			
 			if (changed == 1)
 			{
 				boardEnemy.ClearBoard();
@@ -87,38 +125,7 @@ public:
 				boardMovedPlayer.TempBoard(tankMovedPlayer.GetCoordinateX() , tankMovedPlayer.GetCoordinateY(), 'T');
 				boardMovedPlayer.TempBoard(mine.GetCoordinateX(), mine.GetCoordinateY(), '*');
 			}
-		
-		
-		//IO::ShowBoard(boardMovedPlayer, tankMovedPlayer);
-		//IO::ShowBoard(boardEnemy, tankEnemy);
-			
-			cout << "\n" << endl;
-			LogoTank();
-			cout << "\n" << endl;
-			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-			cout << "\t\t\t_________________________________________" << endl;
-			cout << "\t\t\t|                                       |" << endl;
-			cout << "\t\t\t|     ";
-			SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
-			cout << "Player name - " << tankMovedPlayer.GetName(); cout << "  HP =" << tankMovedPlayer.GetHP();
-			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "   |" << endl;
-			IO::ShowBoard(boardMovedPlayer, tankMovedPlayer);
-			IO::ShowBoard(boardEnemy, tankEnemy);
-			cout << "\t\t\t|     ";
-			SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
-			cout << "Player name - " << tankEnemy.GetName(); cout << "  HP =" << tankEnemy.GetHP();
-			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "   |" << endl;
-			cout << "\t\t\t|_______________________________________|" << endl;
-			cout << "\t      _                                 " << endl;
-			cout << "\t     |W|                                " << endl;
-			cout << "\t   _______              _____                    " << endl;
-			cout << "\t   |A|D|S| - to MOVIE  |ENTER| - Chek your MINE  " << endl;
-			cout << "\t   -------              -----                    " << endl;
-		
-
-		
-
-			
+			Interface(boardMovedPlayer, boardEnemy, tankMovedPlayer, tankEnemy, 0, 0);
 			if (changed==1)
 			{
 				move = _getch();
@@ -163,26 +170,115 @@ public:
 			}
 		} while (move != 13);
 	}
-	static void MoveTank(Tank& tank1,Tank& tank2, Board& board1,Board& board2)//функция для отображения движения танка
+	static void PlayerGameIO(Tank& tankPlayer1, Tank& tankPlayer2,Board& board1, Board& board2,Board& boardMine1, Board& boardMine2,Mine& mine,Heal& heal,int changed)
 	{
-			char move;
-			move = _getch();
-			switch (move)
+		for (int i = tankPlayer1.GetPlayerActionPoints(); i > 0; i--)
+		{
+			system("cls");
+			board1.ClearBoard();
+			board2.ClearBoard();
+			if (changed == 1)
+			{
+				IO::Interface(board1, board2, tankPlayer1, tankPlayer2, tankPlayer1.GetPlayerIndex(), i);
+			}
+			else if (changed == 2)
+			{
+				IO::Interface(board2, board1, tankPlayer2, tankPlayer1, tankPlayer1.GetPlayerIndex(), i);
+			}
+			char action = _getch();
+			switch (action)
 			{
 			case 's':
-				tank1.MoveDown(board1);
+				tankPlayer1.MoveDown(board1);
+				if (mine.CheckMine(boardMine1, tankPlayer1, tankPlayer2.GetCoordinateX(), tankPlayer1.GetCoordinateY()))
+				{
+					IO::ShowMineStat(tankPlayer1, mine);
+				}
 				break;
 			case 'w':
-				tank1.MoveUp(board1);
+				tankPlayer1.MoveUp(board1);
+				if (mine.CheckMine(boardMine1, tankPlayer1, tankPlayer1.GetCoordinateX(), tankPlayer1.GetCoordinateY()))
+				{
+					IO::ShowMineStat(tankPlayer1, mine);
+				}
 				break;
 			case 'a':
-				tank1.MoveLeft(board1);
+				tankPlayer1.MoveLeft(board1);
+				if (mine.CheckMine(boardMine1, tankPlayer1, tankPlayer1.GetCoordinateX(), tankPlayer1.GetCoordinateY()))
+				{
+					IO::ShowMineStat(tankPlayer1, mine);
+				}
 				break;
 			case 'd':
-				tank1.MoveRight(board1);
+				tankPlayer1.MoveRight(board1);
+				if (mine.CheckMine(boardMine1, tankPlayer1, tankPlayer1.GetCoordinateX(), tankPlayer1.GetCoordinateY()))
+				{
+					IO::ShowMineStat(tankPlayer1, mine);
+				}
+				break;
+			case 'm':
+				IO::MoveMine(mine, board1, board2, boardMine2, tankPlayer1, tankPlayer2, tankPlayer1.GetPlayerIndex());
+				break;
+			case 'h':
+				HealTank(tankPlayer1, heal);
+				break;
+			case 32:
+				CheckShot(tankPlayer1, tankPlayer2);
+				break;
+			default:
+				i--;
 				break;
 			}
+		}
+
 	}
+	static void HealTank(Tank& tank, Heal& heal)
+	{
+		if (heal.GetCounter() > 0)
+		{
+			cout << "Wait for reload your Heal " << heal.GetCounter() << endl;
+		}
+		else
+		{
+			char move;//переделать используя делегаты,убрать move
+			cout << "Heal you tank? y - yes, n - no" << endl;
+			cin >> move;
+			switch (move)
+			{
+			case 'y':
+				tank.SetHealHP(heal.GetHeal());
+				heal.SetCounter();
+				cout << "Your HP =" << tank.GetHP() << " After heal " << endl;
+
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
+	static void CheckShot(Tank& attack, Tank& defence)
+	{
+		if (attack.GetCoordinateY() == defence.GetCoordinateY())
+		{
+			int damage;
+			damage = attack.GetDamage();
+			if (damage > 10)
+			{
+				cout << "!!!Critical damage!!!" << endl;
+			}
+			defence.SetHP(damage);
+			cout << attack.GetName() << " Good shot !!!" << endl;
+			cout << "Tank - " << defence.GetName() << " Have damage - " << damage << " .HP " << defence.GetName() << "= " << defence.GetHP() << endl;
+			system("pause");
+		}
+		else
+		{
+			cout << "Miss" << endl;
+			system("pause");
+		}
+	}
+	
 	static void OkrasLogoTank(char logo[][100]) 
 	{	
 		// цвет логотипа
@@ -326,62 +422,14 @@ public:
 		system("pause");
 	}
 
-	static void Interface(Board board1,Board board2,Tank tank1,Tank tank2)
+	static void ShowShot(int damage, Tank tank1, Tank tank2)// для отображения здоровья и полученого урона танка
 	{
-		system("cls");
-		cout << "\n" << endl;
-		LogoTank();
-		cout << "\n" << endl;
-		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-		board1.ClearBoard();
-		board2.ClearBoard();
-		cout << "\t\t\t_________________________________________" << endl;
-		cout << "\t\t\t|                                       |" << endl;
-		cout << "\t\t\t|     ";
-		SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
-		cout << "Player name - " << tank1.GetName(); cout << "  HP =" << tank1.GetHP();
-		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "   |" << endl;
-		IO::ShowBoard(board1, tank1);
-		IO::ShowBoard(board2, tank2);
-		cout << "\t\t\t|     ";
-		SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
-		cout << "Player name - " << tank2.GetName(); cout << "  HP =" << tank2.GetHP() ;
-		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "   |" << endl;
-		cout << "\t\t\t|_______________________________________|" << endl;
-		cout << "\t      _                                 " << endl;
-		cout << "\t     |W|                                " << endl;
-		cout << "\t   _______            _____             _                     _            "<< endl;
-		cout << "\t   |A|D|S| - to MOVE |SPACE| - to SHOT |M| - Chek your MINE  |H| - to HEAL "<<endl;
-		cout << "\t   -------            -----             -                     -            "<< endl;
+		cout << tank1.GetName() << " Good shot !!!" << "\n";
+		cout << "Tank - " << tank2.GetName() << " Have damage - " << damage << " .HP " << tank2.GetName() << "= " << tank2.GetHP() << "\n";
+
 	}
 
-	/*static void Interface2(Board board1, Board board2, Tank tank1, Tank tank2)
-	{
-		system("cls");
-		cout << "\n" << endl;
-		LogoTank();
-		cout << "\n" << endl;
-		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-		board1.ClearBoard();
-		board2.ClearBoard();
-		cout << "\t\t\t_________________________________________" << endl;
-		cout << "\t\t\t|                                       |" << endl;
-		cout << "\t\t\t|     ";
-		SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
-		cout << "Player name - " << tank1.GetName(); cout << "  HP =" << tank1.GetHP();
-		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "   |" << endl;
-		IO::ShowBoard(board1, tank1);
-		IO::ShowBoard(board2, tank2);
-		cout << "\t\t\t|     ";
-		SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
-		cout << "Player name - " << tank2.GetName(); cout << "  HP =" << tank2.GetHP();
-		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "   |" << endl;
-		cout << "\t\t\t|_______________________________________|" << endl;
-		
-		cout << "\t   _____            _____             _                     _             " << endl;
-		cout << "\t   ENTER- to MOVIE |SPACE| - to SHOT |M| - Chek your MINE  |H| - to HEAL" << endl;
-		cout << "\t   -----            -----             -                     -            " << endl;
-	}*/
+	
 
 
 	static int  Menu()
