@@ -18,6 +18,7 @@ private:
 	int coordinateX;
 	int coordinateY;
 	int playerIndex;//определяет какой танк ходит 1 или 2
+	int actionPoits = 3;
 public:
 	Tank() //конструктор по умолчанию
 	{}
@@ -190,4 +191,9 @@ public:
 	{
 		return playerIndex;
 	}
+	int GetPlayerActionPoints()
+	{
+		return actionPoits;
+	}
+	
 };
