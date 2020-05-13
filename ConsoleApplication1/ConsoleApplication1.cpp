@@ -18,8 +18,8 @@ int main()
 {
 	system("title TANK BATTLE");
 
-	Tank tank1("_PLayer_1", 100, 6, 10, 1, 1, 1);
-	Tank tank2("_Player_2", 100, 6, 10, 2, 2, 2);
+	Tank tank1("_PLayer_1", 99, 6, 10, 1, 1, 1);
+	Tank tank2("_Looper_2", 99, 6, 10, 2, 2, 2);
 	Mine mine1;
 	Mine mine2;
 	Heal heal1;
@@ -48,19 +48,37 @@ int main()
 		//player1 play
 		for (int i = 0; i < 3; i++)
 		{
-			IO::Interface2(board1, board2, tank1, tank2);
+			IO::Interface(board1, board2, tank1, tank2);
 			SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
 			cout << "\t\t\t\t\tPlayer 1 move" << endl;
 			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
 			action = _getch();
 			switch (action)
 			{
-
-			case 13:
-				IO::Interface(board1, board2, tank1, tank2);
-				IO::MoveTank(tank1, tank2, board1, board2);
-				IO::Interface(board1, board2, tank1, tank2);
-				if (mine2.CheckMine(boardMine1, tank1, tank1.GetCoordinateX(), tank1.GetCoordinateY()) == true)
+			case 's':
+				tank1.MoveDown(board1);
+				if (mine2.CheckMine(boardMine1, tank1, tank1.GetCoordinateX(), tank1.GetCoordinateY()))
+				{
+					IO::ShowMineStat(tank1, mine1);
+				}
+				break;
+			case 'w':
+				tank1.MoveUp(board1);
+				if (mine2.CheckMine(boardMine1, tank1, tank1.GetCoordinateX(), tank1.GetCoordinateY()))
+				{
+					IO::ShowMineStat(tank1, mine1);
+				}
+				break;
+			case 'a':
+				tank1.MoveLeft(board1);
+				if (mine2.CheckMine(boardMine1, tank1, tank1.GetCoordinateX(), tank1.GetCoordinateY()))
+				{
+					IO::ShowMineStat(tank1, mine1);
+				}
+				break;
+			case 'd':
+				tank1.MoveRight(board1);
+				if (mine2.CheckMine(boardMine1, tank1, tank1.GetCoordinateX(), tank1.GetCoordinateY()))
 				{
 					IO::ShowMineStat(tank1, mine1);
 				}
@@ -75,29 +93,50 @@ int main()
 				CheckShot(tank1, tank2);
 				break;
 			default:
-				break;
+				i--;
+			break;
 			}
 		}
 	
 	//player2 play
 		for (int i = 0; i < 3; i++)
 		{
-			IO::Interface2(board1, board2, tank1, tank2);
+			IO::Interface(board1, board2, tank1, tank2);
 			SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
 			cout << "\t\t\t\t\tPlayer 2 move" << endl;
 			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
 			action = _getch();
 			switch (action)
 			{
-			case 13:
-				IO::Interface(board1, board2, tank1, tank2);
-				IO::MoveTank(tank2, tank1, board2, board1);
-				IO::Interface(board1, board2, tank1, tank2);
-				if (mine2.CheckMine(boardMine2, tank2, tank2.GetCoordinateX(), tank2.GetCoordinateY()) == true)
+			case 's':
+				tank2.MoveDown(board1);
+				if (mine1.CheckMine(boardMine2, tank2, tank2.GetCoordinateX(), tank2.GetCoordinateY()))
 				{
-					IO::ShowMineStat(tank2, mine1);
+					IO::ShowMineStat(tank2, mine2);
 				}
 				break;
+			case 'w':
+				tank2.MoveUp(board1);
+				if (mine1.CheckMine(boardMine2, tank2, tank2.GetCoordinateX(), tank2.GetCoordinateY()))
+				{
+					IO::ShowMineStat(tank2, mine2);
+				}
+				break;
+			case 'a':
+				tank2.MoveLeft(board1);
+				if (mine1.CheckMine(boardMine2, tank2, tank2.GetCoordinateX(), tank2.GetCoordinateY()))
+				{
+					IO::ShowMineStat(tank2, mine2);
+				}
+				break;
+			case 'd':
+				tank2.MoveRight(board1);
+				if (mine1.CheckMine(boardMine2, tank2, tank2.GetCoordinateX(), tank2.GetCoordinateY()))
+				{
+					IO::ShowMineStat(tank2, mine2);
+				}
+				break;
+			
 			case 'm':
 				IO::MoveMine(mine1, board1, board2, boardMine1, tank1, tank2, tank2.GetPlayerIndex());
 				break;
@@ -108,10 +147,9 @@ int main()
 				CheckShot(tank2, tank1);
 				break;
 			default:
-				break;
+				i--;
+			break;
 			}
-
-
 		}
 	}
 

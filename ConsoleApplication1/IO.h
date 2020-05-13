@@ -101,19 +101,19 @@ public:
 			cout << "\t\t\t|     ";
 			SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
 			cout << "Player name - " << tankMovedPlayer.GetName(); cout << "  HP =" << tankMovedPlayer.GetHP();
-			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "  |" << endl;
+			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "   |" << endl;
 			IO::ShowBoard(boardMovedPlayer, tankMovedPlayer);
 			IO::ShowBoard(boardEnemy, tankEnemy);
 			cout << "\t\t\t|     ";
 			SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
 			cout << "Player name - " << tankEnemy.GetName(); cout << "  HP =" << tankEnemy.GetHP();
-			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "  |" << endl;
+			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "   |" << endl;
 			cout << "\t\t\t|_______________________________________|" << endl;
 			cout << "\t      _                                 " << endl;
 			cout << "\t     |W|                                " << endl;
-			cout << "\t   _______              _                    " << endl;
-			cout << "\t   |A|D|S| - to MOVIE  |M| - Chek your MINE  " << endl;
-			cout << "\t   -------              -                    " << endl;
+			cout << "\t   _______              _____                    " << endl;
+			cout << "\t   |A|D|S| - to MOVIE  |ENTER| - Chek your MINE  " << endl;
+			cout << "\t   -------              -----                    " << endl;
 		
 
 		
@@ -136,7 +136,7 @@ public:
 				case 'd':
 					mine.MoveRight(boardEnemy);
 					break;
-				case 'm':
+				case 13:
 					boardMine.SetCoordinate(mine.GetCoordinateX(), mine.GetCoordinateY(), '*');
 				}
 			}
@@ -157,11 +157,11 @@ public:
 				case 'd':
 					mine.MoveRight(boardMovedPlayer);
 					break;
-				case 'm':
+				case 13:
 					boardMine.SetCoordinate(mine.GetCoordinateX(), mine.GetCoordinateY(), '*');
 				}
 			}
-		} while (move != 'm');
+		} while (move != 13);
 	}
 	static void MoveTank(Tank& tank1,Tank& tank2, Board& board1,Board& board2)//функция для отображения движения танка
 		{
@@ -211,11 +211,11 @@ public:
 			"                                             #***O*******O*******O*******O****#              ",
 			"                                              #***O*****O*******O*******O****#               ",
 			"                                               ##############################                ",
-			"                    ######          ###     #######  ##                                      ",
-			"                   ##    ##       ##   ##     ##    ##                                       ",
-			"                  ########      ## ### ##    ##    ##                                        ",
-			"                 ##      ##   ## ##### ##   ##    ##                                         ",
-			"                ##########  ##         ##  ##    ########                                    ",
+			"                  ######          ###     #######  #######  ##                               ",
+			"                 ##    ##       ##   ##     ##      ##     ##                                ",
+			"                ########      ## ### ##    ##      ##     ##                                 ",
+			"               ##      ##   ## ##### ##   ##      ##     ##                                  ",
+			"              ##########  ##         ##  ##      ##     ########                             ",
 		};
 		OkrasLogoTank(Logo);
 	}
@@ -240,22 +240,22 @@ public:
 		cout << "\t\t\t|     ";
 		SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
 		cout << "Player name - " << tank1.GetName(); cout << "  HP =" << tank1.GetHP();
-		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "  |" << endl;
+		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "   |" << endl;
 		IO::ShowBoard(board1, tank1);
 		IO::ShowBoard(board2, tank2);
 		cout << "\t\t\t|     ";
 		SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
 		cout << "Player name - " << tank2.GetName(); cout << "  HP =" << tank2.GetHP() ;
-		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "  |" << endl;
+		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "   |" << endl;
 		cout << "\t\t\t|_______________________________________|" << endl;
 		cout << "\t      _                                 " << endl;
 		cout << "\t     |W|                                " << endl;
-		cout << "\t   _______           "<< endl;
-		cout << "\t   |A|D|S| - to MOVE" <<endl;
-		cout << "\t   -------           "<< endl;
+		cout << "\t   _______            _____             _                     _            "<< endl;
+		cout << "\t   |A|D|S| - to MOVE |SPACE| - to SHOT |M| - Chek your MINE  |H| - to HEAL "<<endl;
+		cout << "\t   -------            -----             -                     -            "<< endl;
 	}
 
-	static void Interface2(Board board1, Board board2, Tank tank1, Tank tank2)
+	/*static void Interface2(Board board1, Board board2, Tank tank1, Tank tank2)
 	{
 		system("cls");
 		cout << "\n" << endl;
@@ -269,18 +269,18 @@ public:
 		cout << "\t\t\t|     ";
 		SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
 		cout << "Player name - " << tank1.GetName(); cout << "  HP =" << tank1.GetHP();
-		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "  |" << endl;
+		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "   |" << endl;
 		IO::ShowBoard(board1, tank1);
 		IO::ShowBoard(board2, tank2);
 		cout << "\t\t\t|     ";
 		SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
 		cout << "Player name - " << tank2.GetName(); cout << "  HP =" << tank2.GetHP();
-		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "  |" << endl;
+		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); cout << "   |" << endl;
 		cout << "\t\t\t|_______________________________________|" << endl;
 		
 		cout << "\t   _____            _____             _                     _             " << endl;
 		cout << "\t   ENTER- to MOVIE |SPACE| - to SHOT |M| - Chek your MINE  |H| - to HEAL" << endl;
 		cout << "\t   -----            -----             -                     -            " << endl;
-	}
+	}*/
 
 };
