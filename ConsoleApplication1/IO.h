@@ -164,7 +164,7 @@ public:
 		} while (move != 'm');
 	}
 	static void MoveTank(Tank& tank1,Tank& tank2, Board& board1,Board& board2)//функция для отображения движения танка
-		{
+	{
 			char move;
 			move = _getch();
 			switch (move)
@@ -182,8 +182,10 @@ public:
 				tank1.MoveRight(board1);
 				break;
 			}
-		}
-	static void OkrasLogoTank(char logo[][100]) {// цвет логотипа
+	}
+	static void OkrasLogoTank(char logo[][100]) 
+	{	
+		// цвет логотипа
 		HANDLE consoleOutput;
 		consoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -200,8 +202,9 @@ public:
 			}
 		}
 	}
-
-	static void LogoTank() { // Логотип
+	static void LogoTank() 
+	{
+		 // Логотип
 		char Logo[15][100] = {
 			" #######     ###        ##      ##   ##   ##           #############                         ",
 			"   ##      ##   ##     # ##    ##   ##  ##           ####################################### ",
@@ -211,13 +214,110 @@ public:
 			"                                             #***O*******O*******O*******O****#              ",
 			"                                              #***O*****O*******O*******O****#               ",
 			"                                               ##############################                ",
-			"                    ######          ###     #######  ##                                      ",
-			"                   ##    ##       ##   ##     ##    ##                                       ",
-			"                  ########      ## ### ##    ##    ##                                        ",
-			"                 ##      ##   ## ##### ##   ##    ##                                         ",
-			"                ##########  ##         ##  ##    ########                                    ",
+			"                    ######          ###     #######  #######  ##        ######               ",
+			"                   ##    ##       ##   ##     ##       ##    ##        ##                    ",
+			"                  ########      ## ### ##    ##       ##    ##        #####                  ",
+			"                 ##      ##   ## ##### ##   ##       ##    ##        ##                      ",
+			"                ##########  ##         ##  ##       ##    ########  ######                   ",
 		};
 		OkrasLogoTank(Logo);
+	}
+
+	static void OkrasMenuRed(char logo[][100]) {// цвет логотипа
+		HANDLE consoleOutput;
+		consoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
+
+		
+		for (int i = 0; i < 5; i++) {
+				SetConsoleTextAttribute(consoleOutput, 12); //Перед строкой для выделения текста цветом 
+				cout << "\t\t\t\t" << logo[i] << endl;
+				SetConsoleTextAttribute(consoleOutput, 15); //Возвращаем назад цвет
+		}
+	}
+
+	static void OkrasMenuGreen(char logo[][100]) 
+	{
+		// цвет логотипа
+		HANDLE consoleOutput;
+		consoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
+
+		for (int i = 0; i < 5; i++) {
+			SetConsoleTextAttribute(consoleOutput, 10); //Перед строкой для выделения текста цветом
+			cout << "\t\t\t\t" << logo[i] << endl;
+			SetConsoleTextAttribute(consoleOutput, 15); //Возвращаем назад цвет
+		}
+	}
+
+	static void LogoStart(int color) 
+	{ 
+		char Start[5][100] = {
+			" ***  *****     *     *****  ***** ",
+			" *      *      * *    *    *   *   ",
+			" ***    *     *   *   *****    *   ",
+			"   *    *    * *** *  *  *     *   ",
+			" ***    *   *       * *    *   *   ",
+ 
+		};
+		if (color == 0) 
+		{
+			OkrasMenuGreen(Start);
+		} if (color == 1) 
+		{
+			OkrasMenuRed(Start);
+		}
+	}
+	static void LogoAuthors(int color) 
+	{
+		char Authors[5][100] = {
+			"    *     *       * ***** *     *   ***   *****  ***  ",
+			"   * *    *       *   *   *     *  *   *  *    * *    ",
+			"  *   *   *       *   *   * *** * *     * *****  ***  ",
+			" * *** *   *     *    *   *     *  *   *  * *      *  ",
+			"*       *   * * *     *   *     *   ***   *   *  ***  ",
+
+		};
+		if (color == 0)
+		{
+			OkrasMenuGreen(Authors);
+		} if (color == 1)
+		{
+			OkrasMenuRed(Authors);
+		}
+	}
+	static void LogoRules(int color) 
+	{
+		char Rules[5][100] = {
+			"*****  *       * *     ****  ***  ",
+			"*    * *       * *     *     *    ",
+			"*****  *       * *     ****  ***  ",
+			"* *     *     *  *     *       *  ",
+			"*   *    * * *   ***** ****  ***  ",
+		};
+		if (color == 0)
+		{
+			OkrasMenuGreen(Rules);
+		} if (color == 1)
+		{
+			OkrasMenuRed(Rules);
+		}
+	}
+
+	static void LogoExit(int color) {
+		char Exit[5][100] = {
+			"****  *    *  *  ***** ",
+			"*      *  *   *    *   ",
+			"****    *     *    *   ",
+			"*     *   *   *    *   ",
+			"**** *     *  *    *   ",
+
+		};
+		if (color == 0)
+		{
+			OkrasMenuGreen(Exit);
+		} if (color == 1)
+		{
+			OkrasMenuRed(Exit);
+		}
 	}
 
 	static void ShowMineStat(Tank tank, Mine mine)
@@ -283,4 +383,96 @@ public:
 		cout << "\t   -----            -----             -                     -            " << endl;
 	}
 
+
+	static int  Menu()
+	{
+		int menuCurs = 1;
+		char perehod;
+
+		do
+		{
+			switch (menuCurs)
+			{
+			case 1:
+				system("cls");
+				LogoTank();
+				cout << endl << endl << endl;
+				LogoStart(0);
+				cout << endl;
+				LogoAuthors(1);
+				cout << endl;
+				LogoRules(1);
+				cout << endl;
+				LogoExit(1);
+				cin >> perehod;
+				if (perehod == 's')
+				{
+					menuCurs++;
+				}
+				break;
+			case 2:
+				system("cls");
+				LogoTank();
+				cout << endl << endl << endl;
+				LogoStart(1);
+				cout << endl;
+				LogoAuthors(0);
+				cout << endl;
+				LogoRules(1);
+				cout << endl;
+				LogoExit(1);
+				cin >> perehod;
+				if (perehod == 's')
+				{
+					menuCurs++;
+				} else if (perehod == 'w')
+				{
+					menuCurs--;
+				}
+				break;
+			case 3:
+				system("cls");
+				LogoTank();
+				cout << endl << endl << endl;
+				LogoStart(1);
+				cout << endl;
+				LogoAuthors(1);
+				cout << endl;
+				LogoRules(0);
+				cout << endl;
+				LogoExit(1);
+				cin >> perehod;
+				if (perehod == 's')
+				{
+					menuCurs++;
+				}
+				else if (perehod == 'w')
+				{
+					menuCurs--;
+				}
+				break;
+			case 4:
+				system("cls");
+				LogoTank();
+				cout << endl << endl << endl;
+				LogoStart(1);
+				cout << endl;
+				LogoAuthors(1);
+				cout << endl;
+				LogoRules(1);
+				cout << endl;
+				LogoExit(0);
+				cin >> perehod;
+				if (perehod == 'w')
+				{
+					menuCurs--;
+				}
+				break;
+			default:
+				break;
+			}
+		} while (perehod != 'f');
+		return menuCurs;
+	}
+	
 };
