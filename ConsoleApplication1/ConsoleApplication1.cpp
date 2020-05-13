@@ -28,14 +28,30 @@ int main()
 	Board board2;
 	Board boardMine1;
 	Board boardMine2;
+	int vibor;
 	int movedTank;
 	HWND hwnd;
 	char Title[1024];
 	hwnd = GetConsoleWindow();
 	MoveWindow(hwnd, 500, 50, 850, 900, TRUE);//xnew,ynew,wnew,hnew -новые положение x,y, ширина и высота
+	
+	vibor = IO::Menu();
+	if (vibor == 1) 
+	{
+		system("cls");
+		IO::LogoTank();
+		system("pause");
+	}else if (vibor == 2) {
+		system("cls");
+		IO::LogoStart(0);
+		system("pause");
+	}else if (vibor == 3) {
+	
+	}
+	else if (vibor == 4) {
+	
+	}
 
-	IO::LogoTank();
-	system("pause");
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 	char action;
@@ -205,6 +221,7 @@ void CheckShot( Tank& attack, Tank& defence)
 		system("pause");
 	}
 }
+
 
 
 
