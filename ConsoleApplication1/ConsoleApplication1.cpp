@@ -33,13 +33,27 @@ int main()
 	char Title[1024];
 	hwnd = GetConsoleWindow();
 	MoveWindow(hwnd, 500, 50, 850, 900, TRUE);//xnew,ynew,wnew,hnew -новые положение x,y, ширина и высота
-	
+
 	vibor = IO::Menu();
-	if (vibor == 1) 
+	if (vibor == 1)
 	{
+		while (tank1.GetHP() >= 0 && tank2.GetHP() >= 0)
+		{
+			movedTank = Tank::CheckInitiative(tank1, tank2);
 
 
-	}else if (vibor == 2) {
+			//player1 play
+
+			IO::PlayerGameIO(tank1, tank2, board1, board2, boardMine1, boardMine2, mine1, heal1, tank1.GetPlayerIndex());
+
+			//player2 play
+
+			IO::PlayerGameIO(tank2, tank1, board2, board1, boardMine2, boardMine1, mine1, heal1, tank2.GetPlayerIndex());
+
+		}
+
+	}
+	else if (vibor == 2) {
 		system("cls");
 		IO::LogoSergeyOlisov();
 		cout << endl << endl;
@@ -47,8 +61,9 @@ int main()
 		cout << endl << endl;
 		IO::LogoSergePris();
 
-	}else if (vibor == 3) {
-	
+	}
+	else if (vibor == 3) {
+
 	}
 	else if (vibor == 4) {
 		exit(0);
@@ -58,20 +73,20 @@ int main()
 
 	char action;
 
-	while (tank1.GetHP() >= 0 && tank2.GetHP() >= 0)
-	{
-		movedTank = Tank::CheckInitiative(tank1, tank2);
+	//while (tank1.GetHP() >= 0 && tank2.GetHP() >= 0)
+	//{
+	//	movedTank = Tank::CheckInitiative(tank1, tank2);
 
 
-	//player1 play
-		
-		IO::PlayerGameIO(tank1, tank2, board1, board2, boardMine1, boardMine2, mine1, heal1,tank1.GetPlayerIndex());
-	
-	//player2 play
+	////player1 play
+	//	
+	//	IO::PlayerGameIO(tank1, tank2, board1, board2, boardMine1, boardMine2, mine1, heal1,tank1.GetPlayerIndex());
+	//
+	////player2 play
 
-		IO::PlayerGameIO(tank2, tank1, board2, board1, boardMine2, boardMine1, mine1, heal1,tank2.GetPlayerIndex());
-		
-	}
+	//	IO::PlayerGameIO(tank2, tank1, board2, board1, boardMine2, boardMine1, mine1, heal1,tank2.GetPlayerIndex());
+	//	
+//};
 
 
 
