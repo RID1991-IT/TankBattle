@@ -38,18 +38,21 @@ int main()
 	vibor = IO::Menu();
 	if (vibor == 1) 
 	{
-		system("cls");
-		IO::LogoTank();
-		system("pause");
+
+
 	}else if (vibor == 2) {
 		system("cls");
-		IO::LogoStart(0);
-		system("pause");
+		IO::LogoSergeyOlisov();
+		cout << endl << endl;
+		IO::LogoIliaRyazantsev();
+		cout << endl << endl;
+		IO::LogoSergePris();
+
 	}else if (vibor == 3) {
 	
 	}
 	else if (vibor == 4) {
-	
+		exit(0);
 	}
 
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
