@@ -124,10 +124,11 @@ public:
 			{
 				boardMovedPlayer.ClearBoard();
 				boardMovedPlayer.TempBoard(tankMovedPlayer.GetCoordinateX() , tankMovedPlayer.GetCoordinateY(), 'T');
-				boardMovedPlayer.TempBoard(mine.GetCoordinateX(), mine.GetCoordinateY(), '*');
+				boardEnemy.TempBoard(mine.GetCoordinateX(), mine.GetCoordinateY(), '*');
 				Interface(boardEnemy, boardMovedPlayer, tankEnemy, tankMovedPlayer, 0, 0);
+
 			}
-			//Interface(boardMovedPlayer, boardEnemy, tankMovedPlayer, tankEnemy, 0, 0);
+			
 			if (changed==1)
 			{
 				move = _getch();
