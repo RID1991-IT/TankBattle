@@ -20,7 +20,8 @@ int main()
 	Tank tank1("_PLayer_1", 99, 6, 10, 1, 1, 1);
 	Tank tank2("_Looper_2", 99, 6, 10, 2, 2, 2);
 	Mine mine;
-	Heal heal;
+	Heal heal1;
+	Heal heal2;
 	Board board1;
 	Board board2;
 	Board boardMine1;
@@ -41,11 +42,11 @@ int main()
 
 			//player1 play
 
-			IO::PlayerGameIO(tank1, tank2, board1, board2, boardMine1, boardMine2, mine, heal, tank1.GetPlayerIndex());
+			IO::PlayerGameIO(tank1, tank2, board1, board2, boardMine1, boardMine2, mine, heal1, tank1.GetPlayerIndex());
 
 			//player2 play
 
-			IO::PlayerGameIO(tank2, tank1, board2, board1, boardMine2, boardMine1, mine, heal, tank2.GetPlayerIndex());
+			IO::PlayerGameIO(tank2, tank1, board2, board1, boardMine2, boardMine1, mine, heal2, tank2.GetPlayerIndex());
 
 		}
 
