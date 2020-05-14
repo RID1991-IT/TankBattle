@@ -19,23 +19,20 @@ int main()
 
 	Tank tank1("_PLayer_1", 99, 6, 10, 1, 1, 1);
 	Tank tank2("_Looper_2", 99, 6, 10, 2, 2, 2);
-	Mine mine1;
-	Mine mine2;
-	Heal heal1;
-	Heal heal2;
+	Mine mine;
+	Heal heal;
 	Board board1;
 	Board board2;
 	Board boardMine1;
 	Board boardMine2;
-	int vibor;
 	int movedTank;
 	HWND hwnd;
 	char Title[1024];
 	hwnd = GetConsoleWindow();
 	MoveWindow(hwnd, 500, 50, 850, 900, TRUE);//xnew,ynew,wnew,hnew -новые положение x,y, ширина и высота
 
-	vibor = IO::Menu();
-	if (vibor == 1)
+	int check = IO::Menu();
+	if (check == 1)
 	{
 		while (tank1.GetHP() >= 0 && tank2.GetHP() >= 0)
 		{
@@ -44,16 +41,16 @@ int main()
 
 			//player1 play
 
-			IO::PlayerGameIO(tank1, tank2, board1, board2, boardMine1, boardMine2, mine1, heal1, tank1.GetPlayerIndex());
+			IO::PlayerGameIO(tank1, tank2, board1, board2, boardMine1, boardMine2, mine, heal, tank1.GetPlayerIndex());
 
 			//player2 play
 
-			IO::PlayerGameIO(tank2, tank1, board2, board1, boardMine2, boardMine1, mine1, heal1, tank2.GetPlayerIndex());
+			IO::PlayerGameIO(tank2, tank1, board2, board1, boardMine2, boardMine1, mine, heal, tank2.GetPlayerIndex());
 
 		}
 
 	}
-	else if (vibor == 2) {
+	else if (check == 2) {
 		system("cls");
 		IO::LogoSergeyOlisov();
 		cout << endl << endl;
@@ -62,32 +59,16 @@ int main()
 		IO::LogoSergePris();
 
 	}
-	else if (vibor == 3) {
+	else if (check == 3) {
 
 	}
-	else if (vibor == 4) {
+	else if (check == 4) {
 		exit(0);
 	}
 
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	
 
-	char action;
-
-	//while (tank1.GetHP() >= 0 && tank2.GetHP() >= 0)
-	//{
-	//	movedTank = Tank::CheckInitiative(tank1, tank2);
-
-
-	////player1 play
-	//	
-	//	IO::PlayerGameIO(tank1, tank2, board1, board2, boardMine1, boardMine2, mine1, heal1,tank1.GetPlayerIndex());
-	//
-	////player2 play
-
-	//	IO::PlayerGameIO(tank2, tank1, board2, board1, boardMine2, boardMine1, mine1, heal1,tank2.GetPlayerIndex());
-	//	
-//};
-
+	
 
 
 
