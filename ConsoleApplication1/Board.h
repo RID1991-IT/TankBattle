@@ -23,9 +23,9 @@ public:
 				board[i][j] = ' ';
 			}
 		}
-		board[2][0] = '#';
-		board[2][2] = '#';
-		board[2][4] = '#';
+		board[2][0] = 'X';
+		board[2][2] = 'X';
+		board[2][4] = 'X';
 	}
 	void TempBoard(int x, int y, char essence)
 	{

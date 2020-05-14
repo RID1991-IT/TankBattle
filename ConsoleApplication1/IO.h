@@ -47,7 +47,7 @@ public:
 					cout << "|";
 
 				}
-				else if(board.GetCoordinate(i, j) == '#')
+				else if(board.GetCoordinate(i, j) == 'X')
 				{
 					SetConsoleTextAttribute(hConsole, (WORD)((1 << 4) | 15));
 					cout << board.GetCoordinate(i, j);
