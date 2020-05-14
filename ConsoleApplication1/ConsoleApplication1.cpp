@@ -29,12 +29,21 @@ int main()
 	HWND hwnd;
 	char Title[1024];
 	hwnd = GetConsoleWindow();
-	MoveWindow(hwnd, 500, 50, 850, 900, TRUE);//xnew,ynew,wnew,hnew -новые положение x,y, ширина и высота
-	bool end = false;
-	while (!end)
+	MoveWindow(hwnd, 500, 30, 850, 1000, TRUE);//xnew,ynew,wnew,hnew -новые положение x,y, ширина и высота
+	int check = Logo::Menu();
+	do
 	{
 		int check = Logo::Menu();
-		if (check == 1) {
+		if (check == 1) 
+		{
+			tank1.SetPullHp(99);
+			tank2.SetPullHp(99);
+			tank1.SetCoordinateX(1);
+			tank1.SetCoordinateY(1);
+			tank2.SetCoordinateX(3);
+			tank2.SetCoordinateY(3);
+			boardMine1.ClearBoard();
+			boardMine2.ClearBoard();
 			while (tank1.GetHP() >= 0 && tank2.GetHP() >= 0)
 			{
 				movedTank = Tank::CheckInitiative(tank1, tank2);
@@ -70,7 +79,8 @@ int main()
 				}
 			}
 		}
-		else if (check == 2) {
+		else if (check == 2) 
+		{
 			system("cls");
 			Logo::LogoSergeyOlisov();
 			cout << endl << endl;
@@ -79,14 +89,16 @@ int main()
 			Logo::LogoSergePris();
 			system("pause");
 		}
-		else if (check == 3) {
+		else if (check == 3)
+		{
 
 		}
-		else if (check == 4) {
+		 /*(check == 4) {
 			end = true;
-		}
+		}*/
+		
 	}
-	
+	while (check != 4);
 }
 
 

@@ -34,6 +34,10 @@ public:
 		coordinateY = y;
 		this->playerIndex = playerIndex;
 	}
+	void SetPullHp(int health)
+	{
+		hp = health;
+	}
 
 	void SetHP(int damage) //получение урона танком
 	{
