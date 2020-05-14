@@ -56,6 +56,26 @@ public:
 			SetConsoleTextAttribute(consoleOutput, 15); //Возвращаем назад цвет
 		}
 	}
+	static void OkrasLogoAuthor(char logo[][100])
+	{
+		// цвет логотипа
+		HANDLE consoleOutput;
+		consoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
+
+		for (int i = 0; i < 6; i++) 
+				{
+				SetConsoleTextAttribute(consoleOutput, 2); //Перед строкой для выделения текста цветом 
+				cout << "\t" << logo[i] << endl;
+				SetConsoleTextAttribute(consoleOutput, 15); //Возвращаем назад цвет
+				}
+		for (int i = 6; i < 14; i++)
+		{
+			SetConsoleTextAttribute(consoleOutput, 9); //Перед строкой для выделения текста цветом
+			cout << "\t" << logo[i] << endl;
+			SetConsoleTextAttribute(consoleOutput, 15); //Возвращаем назад цвет
+		};
+	}
+
 	// Логотипы
 	static void LogoTank()
 	{
@@ -242,7 +262,7 @@ public:
 	// Авторы 
 	static void LogoSergeyOlisov()
 	{
-		char SergeyOlisov[15][100] = {
+		char SergeyOlisov[14][100] = {
 			"                                            ##                 ",
 			"   #####    #####  #####   #####  #####  #    ##               ",
 			" #         #      #    #  #      #      #   # #                ",
@@ -257,11 +277,11 @@ public:
 			"     #    #    #    #   # #   #   #        #    #   #      #   ",
 			"      ###    #      #  ##    #     #####    ###    #######     ",
 		};
-		OkrasLogoTank(SergeyOlisov);
+		OkrasLogoAuthor(SergeyOlisov);
 	}
 	static void LogoSergePris()
 	{
-		char SergePris[15][100] = {
+		char SergePris[14][100] = {
 			"                                             ##               ",
 			"   #####    #####  #####   #####  #####  #    ##              ",
 			" #         #      #    #  #      #      #   # #               ",
@@ -276,11 +296,11 @@ public:
 			" #    #  #        # #   #    #          # #     #  #    #    #  #     # #     #  #   ",
 			"#    #  #        ##    #      #####  #   #    #  #  #  #    #  ######  #    #      # ",
 		};
-		OkrasLogoTank(SergePris);
+		OkrasLogoAuthor(SergePris);
 	}
 	static void LogoIliaRyazantsev()
 	{
-		char liaRyazantsev[15][100] = {
+		char liaRyazantsev[14][100] = {
 			"    #    ##   ###      #        ##### ",
 			"   #   # #   #  #     #       #    # ",
 			"  #  #  #   #   #    #####    #####  ",
@@ -295,7 +315,7 @@ public:
 			"#         #   #   #####   #      #  #    #  #########  #####  ######   ",
 			"                                                   #                   ",
 		};
-		OkrasLogoTank(liaRyazantsev);
+		OkrasLogoAuthor(liaRyazantsev);
 	}
 
 
