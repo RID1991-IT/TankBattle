@@ -4,9 +4,12 @@
 #include "Mine.h"
 #include "Heal.h"
 #include "IO.h"
+#include "Logo.h"
+
 #include <conio.h>
 #include <stdio.h>
 #include <Windows.h>
+
 
 using namespace std;
 
@@ -31,7 +34,7 @@ int main()
 	hwnd = GetConsoleWindow();
 	MoveWindow(hwnd, 500, 50, 850, 900, TRUE);//xnew,ynew,wnew,hnew -новые положение x,y, ширина и высота
 
-	int check = IO::Menu();
+	int check = Logo::Menu();
 	if (check == 1)
 	{
 		while (tank1.GetHP() >= 0 && tank2.GetHP() >= 0)
@@ -52,11 +55,11 @@ int main()
 	}
 	else if (check == 2) {
 		system("cls");
-		IO::LogoSergeyOlisov();
+		Logo::LogoSergeyOlisov();
 		cout << endl << endl;
-		IO::LogoIliaRyazantsev();
+		Logo::LogoIliaRyazantsev();
 		cout << endl << endl;
-		IO::LogoSergePris();
+		Logo::LogoSergePris();
 
 	}
 	else if (check == 3) {

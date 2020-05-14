@@ -153,6 +153,7 @@
     <ClInclude Include="Board.h" />
     <ClInclude Include="Heal.h" />
     <ClInclude Include="IO.h" />
+    <ClInclude Include="Logo.h" />
     <ClInclude Include="Mine.h" />
     <ClInclude Include="Tank.h" />
   </ItemGroup>
