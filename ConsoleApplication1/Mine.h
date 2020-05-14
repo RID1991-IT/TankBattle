@@ -54,11 +54,11 @@ public:
 
 	void MoveDown(Board& board)
 	{
-		if (GetCoordinateX() == board.SIZEBOARD - 1)
+		if (GetCoordinateX() == board.SIZEBOARD - 1 || board.GetCoordinate(GetCoordinateX() + 1, GetCoordinateY()) == 'X')
 		{
 			board.SetCoordinate(GetCoordinateX(), GetCoordinateY(), '*');
 		}
-		if (GetCoordinateX() < board.SIZEBOARD - 1)
+		else if (GetCoordinateX() < board.SIZEBOARD - 1)
 		{
 			board.SetCoordinate(GetCoordinateX() + 1, GetCoordinateY(), '*');
 			SetCoordinateMineX(GetCoordinateX() + 1);
@@ -66,11 +66,11 @@ public:
 	}
 	void MoveUp(Board& board)
 	{
-		if (GetCoordinateX() == 0)
+		if (GetCoordinateX() == 0 || board.GetCoordinate(GetCoordinateX() - 1, GetCoordinateY()) == 'X')
 		{
 			board.SetCoordinate(GetCoordinateX(), GetCoordinateY(), '*');
 		}
-		if (GetCoordinateX() > 0)
+		else if (GetCoordinateX() > 0)
 		{
 			board.SetCoordinate(GetCoordinateX() - 1, GetCoordinateY(), '*');
 			SetCoordinateMineX(GetCoordinateX() - 1);
@@ -78,11 +78,11 @@ public:
 	}
 	void MoveRight(Board& board)
 	{
-		if (GetCoordinateY() == board.SIZEBOARD - 1)
+		if (GetCoordinateY() == board.SIZEBOARD - 1 || board.GetCoordinate(GetCoordinateX(), GetCoordinateY() + 1) == 'X')
 		{
 			board.SetCoordinate(GetCoordinateX(), GetCoordinateY(), '*');
 		}
-		if (GetCoordinateY() < board.SIZEBOARD - 1)
+		else if (GetCoordinateY() < board.SIZEBOARD - 1)
 		{
 			board.SetCoordinate(GetCoordinateX(), GetCoordinateY() + 1, '*');
 			SetCoordinateMineY(GetCoordinateY() + 1);
@@ -90,11 +90,11 @@ public:
 	}
 	void MoveLeft(Board& board)
 	{
-		if (GetCoordinateY() == 0)
+		if (GetCoordinateY() == 0 || board.GetCoordinate(GetCoordinateX(), GetCoordinateY() - 1) == 'X')
 		{
 			board.SetCoordinate(GetCoordinateX(), GetCoordinateY(), '*');
 		}
-		if (GetCoordinateY() > 0)
+		 else if (GetCoordinateY() > 0)
 		{
 			board.SetCoordinate(GetCoordinateX(), GetCoordinateY() - 1, '*');
 			SetCoordinateMineY(GetCoordinateY() - 1);
@@ -114,5 +114,4 @@ public:
 			return false;
 		}
 	}
-
 };

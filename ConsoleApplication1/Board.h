@@ -6,7 +6,7 @@ using namespace std;
 class Board
 {
 public:
-	static const int SIZEBOARD = 4;
+	static const int SIZEBOARD = 5;	
 private:
 	char board[SIZEBOARD][SIZEBOARD];
 public:
@@ -23,6 +23,9 @@ public:
 				board[i][j] = ' ';
 			}
 		}
+		board[2][0] = 'X';
+		board[2][2] = 'X';
+		board[2][4] = 'X';
 	}
 	void TempBoard(int x, int y, char essence)
 	{

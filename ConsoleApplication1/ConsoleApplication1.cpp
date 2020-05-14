@@ -10,18 +10,14 @@
 #include <stdio.h>
 #include <Windows.h>
 
-
 using namespace std;
 
-
-
-  
 int main()
 {
 	system("title TANK BATTLE");
 
 	Tank tank1("_PLayer_1", 99, 6, 10, 1, 1, 1);
-	Tank tank2("_Looper_2", 99, 6, 10, 2, 2, 2);
+	Tank tank2("_Looper_2", 99, 6, 10, 2, 3, 3);
 	Mine mine;
 	Heal heal1;
 	Heal heal2;
@@ -34,48 +30,62 @@ int main()
 	char Title[1024];
 	hwnd = GetConsoleWindow();
 	MoveWindow(hwnd, 500, 50, 850, 900, TRUE);//xnew,ynew,wnew,hnew -новые положение x,y, ширина и высота
-
-	int check = Logo::Menu();
-	if (check == 1)
+	bool end = false;
+	while (!end)
 	{
-		while (tank1.GetHP() >= 0 && tank2.GetHP() >= 0)
-		{
-			movedTank = Tank::CheckInitiative(tank1, tank2);
+		int check = Logo::Menu();
+		if (check == 1) {
+			while (tank1.GetHP() >= 0 && tank2.GetHP() >= 0)
+			{
+				movedTank = Tank::CheckInitiative(tank1, tank2);
 
-
-			//player1 play
-
-			IO::PlayerGameIO(tank1, tank2, board1, board2, boardMine1, boardMine2, mine, heal1, tank1.GetPlayerIndex());
-
-			//player2 play
-
-			IO::PlayerGameIO(tank2, tank1, board2, board1, boardMine2, boardMine1, mine, heal2, tank2.GetPlayerIndex());
+				//player1 play
+				IO::PlayerGameIO(tank1, tank2, board1, board2, boardMine1, boardMine2, mine, heal1, tank1.GetPlayerIndex());
+				
+					if (tank2.GetHP() <= 0) 
+					{
+						Logo::LogoWiner(tank1.GetPlayerIndex());
+						system("pause");
+						break;
+					}
+					else if (tank1.GetHP() <= 0)
+					{
+						Logo::LogoWiner(tank2.GetPlayerIndex());
+						system("pause");
+						break;
+					}
+				//player2 play
+				IO::PlayerGameIO(tank2, tank1, board2, board1, boardMine2, boardMine1, mine, heal2, tank2.GetPlayerIndex());
+				if (tank2.GetHP() <= 0)
+				{
+					Logo::LogoWiner(tank1.GetPlayerIndex());
+					system("pause");
+					break;
+				}
+				else if (tank1.GetHP() <= 0)
+				{
+					Logo::LogoWiner(tank2.GetPlayerIndex());
+					system("pause");
+					break;
+				}
+			}
+		}
+		else if (check == 2) {
+			system("cls");
+			Logo::LogoSergeyOlisov();
+			cout << endl << endl;
+			Logo::LogoIliaRyazantsev();
+			cout << endl << endl;
+			Logo::LogoSergePris();
+			system("pause");
+		}
+		else if (check == 3) {
 
 		}
-
+		else if (check == 4) {
+			end = true;
+		}
 	}
-	else if (check == 2) {
-		system("cls");
-		Logo::LogoSergeyOlisov();
-		cout << endl << endl;
-		Logo::LogoIliaRyazantsev();
-		cout << endl << endl;
-		Logo::LogoSergePris();
-
-	}
-	else if (check == 3) {
-
-	}
-	else if (check == 4) {
-		exit(0);
-	}
-
-	
-
-	
-
-
-
 	
 }
 

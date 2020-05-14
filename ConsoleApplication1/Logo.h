@@ -150,7 +150,8 @@ public:
 			OkrasMenuRed(Rules);
 		}
 	}
-	static void LogoExit(int color) {
+	static void LogoExit(int color) 
+	{
 		char Exit[5][100] = {
 			"****  *    *  *  ***** ",
 			"*      *  *   *    *   ",
@@ -166,7 +167,26 @@ public:
 		{
 			OkrasMenuRed(Exit);
 		}
+	}	
+	static void LogoWiner(int color) 
+	{
+		char Exit[5][100] = {
+			"##         ##  ##  ####   ##  ####   ##  ######  ###### ",
+			"##         ##  ##  ## ##  ##  ## ##  ##  ##      ##  ## ",
+			"##  ####   ##  ##  ##  ## ##  ##  ## ##  ######  ###### ",
+			"## ##  ##  ##  ##  ##   ####  ##   ####  ##      ## ##  ",
+			"####     ####  ##  ##    ###  ##    ###  ######  ##  ## ",
+
+		};
+		if (color == 2)
+		{
+			OkrasMenuGreen(Exit);
+		} if (color == 1)
+		{
+			OkrasMenuRed(Exit);
+		}
 	}
+
 	// Μενώ
 	static int  Menu()
 	{
@@ -317,7 +337,6 @@ public:
 		};
 		OkrasLogoAuthor(liaRyazantsev);
 	}
-
 
 };
 

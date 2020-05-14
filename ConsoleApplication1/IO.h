@@ -18,7 +18,7 @@ public:
 
 		board.TempBoard(tank.GetCoordinateX(), tank.GetCoordinateY(), 'T');
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        cout << "\t\t\t|\t\t---------\t\t|" << endl;
+        cout << "\t\t\t|\t\t-----------\t\t|" << endl;
 		for (int i = 0; i < board.SIZEBOARD; i++)
 		{
 			cout << "\t\t\t|\t\t|";
@@ -31,7 +31,7 @@ public:
 					SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
 					cout << "|";
 				}
-			else if (board.GetCoordinate(i, j) == 'T' && tank.GetPlayerIndex() == 2)
+			    else if (board.GetCoordinate(i, j) == 'T' && tank.GetPlayerIndex() == 2)
 				{
 					SetConsoleTextAttribute(hConsole, (WORD)((2 << 4) | 1));
 					cout << board.GetCoordinate(i,j );
@@ -47,6 +47,15 @@ public:
 					cout << "|";
 
 				}
+				else if(board.GetCoordinate(i, j) == 'X')
+				{
+					SetConsoleTextAttribute(hConsole, (WORD)((1 << 4) | 15));
+					cout << board.GetCoordinate(i, j);
+					SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
+					cout << "|";
+
+
+				}
 				else
 				{
 					SetConsoleTextAttribute(hConsole, (WORD)((15<< 4) | 4));
@@ -58,7 +67,7 @@ public:
 			}
 			cout << "\t\t|";
 			cout << "\n";
-			cout <<"\t\t\t|\t\t---------\t\t|" << "\n";
+			cout <<"\t\t\t|\t\t-----------\t\t|" << "\n";
 		}
 	}
 	static void Interface(Board board1, Board board2, Tank tank1, Tank tank2, int changed, int actionPoints)
@@ -83,9 +92,9 @@ public:
 		cout << "\t\t\t|_______________________________________|" << endl;
 		cout << "\t      _                                 " << endl;
 		cout << "\t     |W|                                " << endl;
-		cout << "\t   _______            _____             _____                     _            " << endl;
-		cout << "\t   |A|D|S| - to MOVE |SPACE| - to SHOT |Enter| - Chek your MINE  |H| - to HEAL " << endl;
-		cout << "\t   -------            -----             -----                     -            " << endl;
+		cout << "\t   _______            _____             _                    _            " << endl;
+		cout << "\t   |A|D|S| - to MOVE |SPACE| - to SHOT |M| - Put your MINE  |H| - to HEAL " << endl;
+		cout << "\t   -------            -----             -                    -            " << endl;
 		if (changed == 1)
 		{
 			SetConsoleTextAttribute(hConsole, (WORD)((4 << 4) | 15));
@@ -183,11 +192,11 @@ public:
 			board2.ClearBoard();
 			if (changed == 1)
 			{
-				IO::Interface(board1, board2, tankPlayer1, tankPlayer2, tankPlayer1.GetPlayerIndex(), i);
+				Interface(board1, board2, tankPlayer1, tankPlayer2, tankPlayer1.GetPlayerIndex(), i);
 			}
 			else if (changed == 2)
 			{
-				IO::Interface(board2, board1, tankPlayer2, tankPlayer1, tankPlayer1.GetPlayerIndex(), i);
+				Interface(board2, board1, tankPlayer2, tankPlayer1, tankPlayer1.GetPlayerIndex(), i);
 			}
 			char action = _getch();
 			switch (action)
@@ -196,32 +205,32 @@ public:
 				tankPlayer1.MoveDown(board1);
 				if (mine.CheckMine(boardMine1, tankPlayer1, tankPlayer2.GetCoordinateX(), tankPlayer1.GetCoordinateY()))
 				{
-					IO::ShowMineStat(tankPlayer1, mine);
+					ShowMineStat(tankPlayer1, mine);
 				}
 				break;
 			case 'w':
 				tankPlayer1.MoveUp(board1);
 				if (mine.CheckMine(boardMine1, tankPlayer1, tankPlayer1.GetCoordinateX(), tankPlayer1.GetCoordinateY()))
 				{
-					IO::ShowMineStat(tankPlayer1, mine);
+					ShowMineStat(tankPlayer1, mine);
 				}
 				break;
 			case 'a':
 				tankPlayer1.MoveLeft(board1);
 				if (mine.CheckMine(boardMine1, tankPlayer1, tankPlayer1.GetCoordinateX(), tankPlayer1.GetCoordinateY()))
 				{
-					IO::ShowMineStat(tankPlayer1, mine);
+					ShowMineStat(tankPlayer1, mine);
 				}
 				break;
 			case 'd':
 				tankPlayer1.MoveRight(board1);
 				if (mine.CheckMine(boardMine1, tankPlayer1, tankPlayer1.GetCoordinateX(), tankPlayer1.GetCoordinateY()))
 				{
-					IO::ShowMineStat(tankPlayer1, mine);
+					ShowMineStat(tankPlayer1, mine);
 				}
 				break;
 			case 'm':
-				IO::MoveMine(mine, board1, board2, boardMine2, tankPlayer1, tankPlayer2, tankPlayer1.GetPlayerIndex());
+				MoveMine(mine, board1, board2, boardMine2, tankPlayer1, tankPlayer2, tankPlayer1.GetPlayerIndex());
 				break;
 			case 'h':
 				HealTank(tankPlayer1, heal);
@@ -230,9 +239,13 @@ public:
 				CheckShot(tankPlayer1, tankPlayer2);
 				break;
 			default:
-				i--;
+				i++;
 				break;
 			}
+			if (tankPlayer1.GetHP()<=0 || tankPlayer2.GetHP()<=0)
+				{
+					break;
+				}
 		}
 
 	}
