@@ -36,14 +36,7 @@ int main()
         int check = Logo::Menu();
         if (check == 1)
         {
-            tank1.SetPullHp(99);
-            tank2.SetPullHp(99);
-            tank1.SetCoordinateX(1);
-            tank1.SetCoordinateY(1);
-            tank2.SetCoordinateX(3);
-            tank2.SetCoordinateY(3);
-            boardMine1.ClearBoard();
-            boardMine2.ClearBoard();
+            GameInConsole::FirstInicialization(tank1, tank2, boardMine1, boardMine2);
             while (tank1.GetHP() >= 0 && tank2.GetHP() >= 0)
             {
                 //player1 play

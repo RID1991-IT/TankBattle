@@ -4,6 +4,17 @@
 class GameInConsole :IO
 {
 public:
+    static void FirstInicialization(Tank& tank1,Tank& tank2,Board& boardMine1, Board& boardMine2)
+    {
+        tank1.SetPullHp(99);
+        tank2.SetPullHp(99);
+        tank1.SetCoordinateX(1);
+        tank1.SetCoordinateY(1);
+        tank2.SetCoordinateX(3);
+        tank2.SetCoordinateY(3);
+        boardMine1.ClearBoard();
+        boardMine2.ClearBoard();
+    }
     static void PlayerGameIO(Tank& tankPlayer1, Tank& tankPlayer2, Board& board1, Board& board2, Board& boardMine1, Board& boardMine2, Mine& mine, Heal& heal, int changed)
     {
         for (int i = tankPlayer1.GetPlayerActionPoints(); i > 0; i--)
