@@ -30,7 +30,7 @@ int main()
     hwnd = GetConsoleWindow();
     MoveWindow(hwnd, 500, 30, 850, 1000, TRUE);//xnew,ynew,wnew,hnew -новые положение x,y, ширина и высота
     int check = 0;
-    bool end = true;
+    bool end = true;//проврка проверка
     do
     {
         int check = Logo::Menu();
