@@ -166,7 +166,7 @@ public:
         }
         else
         {
-            char move;//переделать используя делегаты,убрать move
+            char move;
             cout << "Heal you tank? y - yes, n - no" << endl;
             cin >> move;
             switch (move)
