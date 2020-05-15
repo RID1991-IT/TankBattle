@@ -6,7 +6,6 @@
 #include "IO.h"
 #include "Logo.h"
 #include "GameInConsole.h"
-
 #include <conio.h>
 #include <stdio.h>
 #include <Windows.h>

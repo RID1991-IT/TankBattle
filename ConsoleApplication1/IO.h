@@ -1,12 +1,13 @@
 #pragma once
-#include <iostream>
-#include <string>
 #include "Mine.h"
 #include "Tank.h"
 #include "Board.h"
 #include "Logo.h"
 #include <stdio.h>
+#include <string>
 #include <Windows.h>
+#include <iostream>
+
 
 using namespace std;
 
