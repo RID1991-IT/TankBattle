@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <string>
 
 using namespace std;
@@ -10,11 +10,11 @@ public:
 private:
     char board[SIZEBOARD][SIZEBOARD];
 public:
-    Board() //конструктор
+    Board() 
     {
         ClearBoard();
     }
-    void ClearBoard() //очистка поля
+    void ClearBoard() 
     {
         for (int i = 0; i < SIZEBOARD; i++)
         {
@@ -40,7 +40,7 @@ public:
             }
         }
     }
-    void SetCoordinate(int x, int y, char move) //заполнение массива значением
+    void SetCoordinate(int x, int y, char move) 
     {
         board[x][y] = move;
     }

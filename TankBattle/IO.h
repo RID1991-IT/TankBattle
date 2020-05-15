@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include "Mine.h"
 #include "Tank.h"
 #include "Board.h"
@@ -121,7 +121,7 @@ public:
         system("pause");
     }
 
-    static void ShowShot(int damage, Tank tank1, Tank tank2)// для отображения здоровья и полученого урона танка
+    static void ShowShot(int damage, Tank tank1, Tank tank2)// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     {
         cout << tank1.GetName() << " Good shot !!!" << "\n";
         cout << "Tank - " << tank2.GetName() << " Have damage - " << damage << " .HP " << tank2.GetName() << "= " << tank2.GetHP() << "\n";

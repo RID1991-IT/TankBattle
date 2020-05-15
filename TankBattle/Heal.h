@@ -1,9 +1,9 @@
-#pragma once
+п»ї#pragma once
 
 using namespace std;
 
 
-class Heal//здоровье способность
+class Heal//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 {
 private:
     int treatment;
@@ -32,6 +32,6 @@ public:
     }
     int GetHeal()
     {
-        return treatment;//возврат значения здоровья в main
+        return treatment;//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ main
     }
 };

@@ -1,8 +1,8 @@
-#pragma once
+п»ї#pragma once
 #include <string>
 using namespace std;
-#include<stdlib.h>//в этом файле содержится функция rand
-#include<time.h> //в этом файле содержится функция time
+#include<stdlib.h>//РїСЂРѕРІРµСЂРєР° СЂР°РЅРґРѕРј Р±РёР±Р»РёРѕС‚РµРєРё
+#include<time.h> 
 #include <stdio.h>
 #include <Windows.h>
 #include "Board.h"
@@ -17,13 +17,13 @@ private:
     int ongoingInitiative;
     int coordinateX;
     int coordinateY;
-    int playerIndex;//определяет какой танк ходит 1 или 2
+    int playerIndex;
     int actionPoits = 3;
 public:
-    Tank() //конструктор по умолчанию
+    Tank() 
     {}
 
-    Tank(string name, int hp, int damage, int initiative, int playerIndex, int x, int y) //конструктор
+    Tank(string name, int hp, int damage, int initiative, int playerIndex, int x, int y) 
     {
         this->name = name;
         this->hp = hp;
@@ -39,7 +39,7 @@ public:
         hp = health;
     }
 
-    void SetHP(int damage) //получение урона танком
+    void SetHP(int damage) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     {
         hp -= damage;
     }
@@ -129,35 +129,35 @@ public:
     static int CheckInitiative(Tank& tank1, Tank& tank2)
     {
         int movedTankIndex;
-        if (tank1.ongoingInitiative >= 20 && tank2.ongoingInitiative >= 20) // если у обоих игроков инициатива достигла значения хода
+        if (tank1.ongoingInitiative >= 20 && tank2.ongoingInitiative >= 20) // пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         {
             srand(time(0));
-            movedTankIndex = 1 + rand() % 2; // рандомно определяем какой игрок пойдёт
-            if (movedTankIndex == 1) //если честь выпала первому игроку, то обнуляем его инифиативу
+            movedTankIndex = 1 + rand() % 2; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+            if (movedTankIndex == 1) //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 tank1.ongoingInitiative -= 20;
                 return movedTankIndex;
             }
-            else if (movedTankIndex == 2) // если второму, то его инициативу обнуляем
+            else if (movedTankIndex == 2) // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             {
                 tank2.ongoingInitiative -= 20;
                 return movedTankIndex;
             }
         }
-        else if (tank1.ongoingInitiative >= 20) //тут аналогично - если первый будет ходить, то у него значение обнуляется
+        else if (tank1.ongoingInitiative >= 20) //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         {
             tank1.ongoingInitiative -= 20;
             movedTankIndex = 1;
             return movedTankIndex;
         }
-        else if (tank2.ongoingInitiative >= 20) // ну и со вторым так же
+        else if (tank2.ongoingInitiative >= 20) // пїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ
         {
             tank2.ongoingInitiative -= 20;
             movedTankIndex = 2;
             return movedTankIndex;
         }
-        tank1.ongoingInitiative += tank1.initiative; // рост инициативы игроков, проходит в конце цикла
-        tank2.ongoingInitiative += tank2.initiative; // вдруг кто-то из игроков уже готов ходить, что бы всё было по-честному
+        tank1.ongoingInitiative += tank1.initiative; // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+        tank2.ongoingInitiative += tank2.initiative; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     }
     string GetName()
     {

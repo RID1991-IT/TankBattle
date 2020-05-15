@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <iostream>
 #include <string>
 #include "Mine.h"
@@ -13,73 +13,73 @@ using namespace std;
 class Logo
 {
 public:
-    // Окрасы Логотипов
+    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     static void OkrasLogoTank(char logo[][100])
     {
-        // цвет логотипа
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         HANDLE consoleOutput;
         consoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 
         for (int i = 0; i < 13; i++) {
             if (i % 2 == 0) {
-                SetConsoleTextAttribute(consoleOutput, 12); //Перед строкой для выделения текста цветом 
+                SetConsoleTextAttribute(consoleOutput, 12); //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 
                 cout << "\t" << logo[i] << endl;
-                SetConsoleTextAttribute(consoleOutput, 15); //Возвращаем назад цвет
+                SetConsoleTextAttribute(consoleOutput, 15); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
             }
             else {
-                SetConsoleTextAttribute(consoleOutput, 10); //Перед строкой для выделения текста цветом
+                SetConsoleTextAttribute(consoleOutput, 10); //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
                 cout << "\t" << logo[i] << endl;
-                SetConsoleTextAttribute(consoleOutput, 15); //Возвращаем назад цвет
+                SetConsoleTextAttribute(consoleOutput, 15); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
             }
         }
     }
-    static void OkrasMenuRed(char logo[][100]) {// цвет логотипа
+    static void OkrasMenuRed(char logo[][100]) {// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         HANDLE consoleOutput;
         consoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 
 
         for (int i = 0; i < 5; i++) {
-            SetConsoleTextAttribute(consoleOutput, 12); //Перед строкой для выделения текста цветом 
+            SetConsoleTextAttribute(consoleOutput, 12); //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 
             cout << "\t\t\t\t" << logo[i] << endl;
-            SetConsoleTextAttribute(consoleOutput, 15); //Возвращаем назад цвет
+            SetConsoleTextAttribute(consoleOutput, 15); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         }
     }
     static void OkrasMenuGreen(char logo[][100])
     {
-        // цвет логотипа
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         HANDLE consoleOutput;
         consoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 
         for (int i = 0; i < 5; i++) {
-            SetConsoleTextAttribute(consoleOutput, 10); //Перед строкой для выделения текста цветом
+            SetConsoleTextAttribute(consoleOutput, 10); //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             cout << "\t\t\t\t" << logo[i] << endl;
-            SetConsoleTextAttribute(consoleOutput, 15); //Возвращаем назад цвет
+            SetConsoleTextAttribute(consoleOutput, 15); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         }
     }
     static void OkrasLogoAuthor(char logo[][100])
     {
-        // цвет логотипа
+        // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         HANDLE consoleOutput;
         consoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 
         for (int i = 0; i < 6; i++)
         {
-            SetConsoleTextAttribute(consoleOutput, 2); //Перед строкой для выделения текста цветом 
+            SetConsoleTextAttribute(consoleOutput, 2); //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 
             cout << "\t" << logo[i] << endl;
-            SetConsoleTextAttribute(consoleOutput, 15); //Возвращаем назад цвет
+            SetConsoleTextAttribute(consoleOutput, 15); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         }
         for (int i = 6; i < 14; i++)
         {
-            SetConsoleTextAttribute(consoleOutput, 9); //Перед строкой для выделения текста цветом
+            SetConsoleTextAttribute(consoleOutput, 9); //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             cout << "\t" << logo[i] << endl;
-            SetConsoleTextAttribute(consoleOutput, 15); //Возвращаем назад цвет
+            SetConsoleTextAttribute(consoleOutput, 15); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         };
     }
 
-    // Логотипы
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     static void LogoTank()
     {
-        // Логотип
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         char Logo[15][100] = {
             " #######     ###        ##      ##   ##   ##           #############                         ",
             "   ##      ##   ##     # ##    ##   ##  ##           ####################################### ",
@@ -187,7 +187,7 @@ public:
         }
     }
 
-    // Меню
+    // пїЅпїЅпїЅпїЅ
     static int  Menu()
     {
         int menuCurs = 1;
@@ -279,7 +279,7 @@ public:
         } while (perehod != 13);
         return menuCurs;
     }
-    // Авторы 
+    // пїЅпїЅпїЅпїЅпїЅпїЅ 
     static void LogoSergeyOlisov()
     {
         char SergeyOlisov[14][100] = {
@@ -340,7 +340,7 @@ public:
     static void LogoRules()
     {
         char Rules[14][100] = {
-            "Правила игры  ",
+            "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ  ",
         };
         OkrasMenuRed(Rules);
     }
