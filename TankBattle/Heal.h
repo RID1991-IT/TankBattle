@@ -3,7 +3,7 @@
 using namespace std;
 
 
-class Heal//�������� �����������
+class Heal
 {
 private:
     int treatment;
@@ -32,6 +32,6 @@ public:
     }
     int GetHeal()
     {
-        return treatment;//������� �������� �������� � main
+        return treatment;
     }
 };

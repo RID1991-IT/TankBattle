@@ -121,7 +121,7 @@ public:
         system("pause");
     }
 
-    static void ShowShot(int damage, Tank tank1, Tank tank2)// ��� ����������� �������� � ���������� ����� �����
+    static void ShowShot(int damage, Tank tank1, Tank tank2)
     {
         cout << tank1.GetName() << " Good shot !!!" << "\n";
         cout << "Tank - " << tank2.GetName() << " Have damage - " << damage << " .HP " << tank2.GetName() << "= " << tank2.GetHP() << "\n";

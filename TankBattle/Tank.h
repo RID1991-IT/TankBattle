@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include <string>
 using namespace std;
-#include<stdlib.h>//проверка рандом библиотеки
+#include<stdlib.h>
 #include<time.h> 
 #include <stdio.h>
 #include <Windows.h>
@@ -39,7 +39,7 @@ public:
         hp = health;
     }
 
-    void SetHP(int damage) //��������� ����� ������
+    void SetHP(int damage) 
     {
         hp -= damage;
     }
@@ -129,35 +129,35 @@ public:
     static int CheckInitiative(Tank& tank1, Tank& tank2)
     {
         int movedTankIndex;
-        if (tank1.ongoingInitiative >= 20 && tank2.ongoingInitiative >= 20) // ���� � ����� ������� ���������� �������� �������� ����
+        if (tank1.ongoingInitiative >= 20 && tank2.ongoingInitiative >= 20) 
         {
             srand(time(0));
-            movedTankIndex = 1 + rand() % 2; // �������� ���������� ����� ����� �����
-            if (movedTankIndex == 1) //���� ����� ������ ������� ������, �� �������� ��� ����������
+            movedTankIndex = 1 + rand() % 2; 
+            if (movedTankIndex == 1) 
             {
                 tank1.ongoingInitiative -= 20;
                 return movedTankIndex;
             }
-            else if (movedTankIndex == 2) // ���� �������, �� ��� ���������� ��������
+            else if (movedTankIndex == 2) 
             {
                 tank2.ongoingInitiative -= 20;
                 return movedTankIndex;
             }
         }
-        else if (tank1.ongoingInitiative >= 20) //��� ���������� - ���� ������ ����� ������, �� � ���� �������� ����������
+        else if (tank1.ongoingInitiative >= 20) 
         {
             tank1.ongoingInitiative -= 20;
             movedTankIndex = 1;
             return movedTankIndex;
         }
-        else if (tank2.ongoingInitiative >= 20) // �� � �� ������ ��� ��
+        else if (tank2.ongoingInitiative >= 20) 
         {
             tank2.ongoingInitiative -= 20;
             movedTankIndex = 2;
             return movedTankIndex;
         }
-        tank1.ongoingInitiative += tank1.initiative; // ���� ���������� �������, �������� � ����� �����
-        tank2.ongoingInitiative += tank2.initiative; // ����� ���-�� �� ������� ��� ����� ������, ��� �� �� ���� ��-��������
+        tank1.ongoingInitiative += tank1.initiative; 
+        tank2.ongoingInitiative += tank2.initiative; 
     }
     string GetName()
     {
