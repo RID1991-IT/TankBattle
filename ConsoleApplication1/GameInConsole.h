@@ -171,7 +171,6 @@ public:
             }
         }
     }
-
     static bool CheckShot(Tank& attack, Tank& defence)
     {
         if (attack.GetCoordinateY() == defence.GetCoordinateY())

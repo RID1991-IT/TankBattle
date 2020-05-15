@@ -46,8 +46,6 @@ int main()
             boardMine2.ClearBoard();
             while (tank1.GetHP() >= 0 && tank2.GetHP() >= 0)
             {
-                movedTank = Tank::CheckInitiative(tank1, tank2);
-
                 //player1 play
                 GameInConsole::PlayerGameIO(tank1, tank2, board1, board2, boardMine1, boardMine2, mine, heal1, tank1.GetPlayerIndex());
 
