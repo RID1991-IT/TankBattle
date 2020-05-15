@@ -14,7 +14,7 @@ class Logo
 {
 public:
   
-    static void OkrasLogoTank(char logo[][100])
+    static void OkrasLogoTank(char logo[][100])//тест
     {
        
         HANDLE consoleOutput;
