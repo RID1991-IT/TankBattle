@@ -5,6 +5,7 @@
 #include "Heal.h"
 #include "IO.h"
 #include "Logo.h"
+#include"GameInConsole.h"
 
 #include <conio.h>
 #include <stdio.h>
@@ -30,7 +31,8 @@ int main()
 	char Title[1024];
 	hwnd = GetConsoleWindow();
 	MoveWindow(hwnd, 500, 30, 850, 1000, TRUE);//xnew,ynew,wnew,hnew -новые положение x,y, ширина и высота
-	int check = Logo::Menu();
+	int check = 0;
+	bool end=true;
 	do
 	{
 		int check = Logo::Menu();
@@ -49,7 +51,7 @@ int main()
 				movedTank = Tank::CheckInitiative(tank1, tank2);
 
 				//player1 play
-				IO::PlayerGameIO(tank1, tank2, board1, board2, boardMine1, boardMine2, mine, heal1, tank1.GetPlayerIndex());
+				GameInConsole::PlayerGameIO(tank1, tank2, board1, board2, boardMine1, boardMine2, mine, heal1, tank1.GetPlayerIndex());
 				
 					if (tank2.GetHP() <= 0) 
 					{
@@ -64,7 +66,7 @@ int main()
 						break;
 					}
 				//player2 play
-				IO::PlayerGameIO(tank2, tank1, board2, board1, boardMine2, boardMine1, mine, heal2, tank2.GetPlayerIndex());
+				GameInConsole::PlayerGameIO(tank2, tank1, board2, board1, boardMine2, boardMine1, mine, heal2, tank2.GetPlayerIndex());
 				if (tank2.GetHP() <= 0)
 				{
 					Logo::LogoWiner(tank1.GetPlayerIndex());
@@ -93,12 +95,13 @@ int main()
 		{
 
 		}
-		 /*(check == 4) {
-			end = true;
-		}*/
+		 else if (check == 4)
+		 {
+			end = false;
+		 }
 		
 	}
-	while (check != 4);
+	while (end != false);
 }
 
 

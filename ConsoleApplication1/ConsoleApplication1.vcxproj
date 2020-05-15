@@ -151,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
+    <ClInclude Include="GameInConsole.h" />
     <ClInclude Include="Heal.h" />
     <ClInclude Include="IO.h" />
     <ClInclude Include="Logo.h" />
