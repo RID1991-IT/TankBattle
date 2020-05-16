@@ -16,7 +16,6 @@ int main()
 {
     setlocale(LC_ALL, "ru");
     system("title TANK BATTLE");
-
     Tank tank1("_PLayer_1", 99, 6, 10, 1, 1, 1);
     Tank tank2("_Looper_2", 99, 6, 10, 2, 3, 3);
     Mine mine1;
@@ -48,14 +47,12 @@ int main()
                 {
                     break;
                 }
-
                 //player2 play
                 GameInConsole::PlayerGameIO(tank2, tank1, board2, board1, boardMine2, boardMine1, mine2, heal2, tank2.GetPlayerIndex());
                 if (GameInConsole::CheckWin(tank1, tank2))
                 {
                     break;
                 }
-
             }
         }
         else if (check == 2)
@@ -76,7 +73,6 @@ int main()
         {
             end = false;
         }
-
     } while (end != false);
 }
 

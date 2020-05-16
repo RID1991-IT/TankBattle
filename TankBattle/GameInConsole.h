@@ -173,8 +173,6 @@ public:
             heal.SetCounter();
             return true;
         }
-
-
     }
     static bool CheckShot(Tank& attack, Tank& defence)
     {
