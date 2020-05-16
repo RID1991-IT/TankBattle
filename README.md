@@ -1,2 +1,2 @@
-![Alt-текст](img/Logo.jpg)
+![Alt-текст](img/Logo.JPG)
 [![Тут текст]
