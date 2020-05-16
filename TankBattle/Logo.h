@@ -12,25 +12,22 @@ using namespace std;
 
 class Logo
 {
-    
 public:
-  
     static void OkrasLogoTank(char logo[][100])
     {
-       
         HANDLE consoleOutput;
         consoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 
         for (int i = 0; i < 13; i++) {
             if (i % 2 == 0) {
-                SetConsoleTextAttribute(consoleOutput, 12); 
+                SetConsoleTextAttribute(consoleOutput, 12);
                 cout << "\t" << logo[i] << endl;
-                SetConsoleTextAttribute(consoleOutput, 15); 
+                SetConsoleTextAttribute(consoleOutput, 15);
             }
             else {
-                SetConsoleTextAttribute(consoleOutput, 10); 
+                SetConsoleTextAttribute(consoleOutput, 10);
                 cout << "\t" << logo[i] << endl;
-                SetConsoleTextAttribute(consoleOutput, 15); 
+                SetConsoleTextAttribute(consoleOutput, 15);
             }
         }
     }
@@ -40,40 +37,38 @@ public:
 
 
         for (int i = 0; i < 5; i++) {
-            SetConsoleTextAttribute(consoleOutput, 12); 
+            SetConsoleTextAttribute(consoleOutput, 12);
             cout << "\t\t\t\t" << logo[i] << endl;
-            SetConsoleTextAttribute(consoleOutput, 15); 
+            SetConsoleTextAttribute(consoleOutput, 15);
         }
     }
     static void OkrasMenuGreen(char logo[][100])
     {
-        
         HANDLE consoleOutput;
         consoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 
         for (int i = 0; i < 5; i++) {
-            SetConsoleTextAttribute(consoleOutput, 10); 
+            SetConsoleTextAttribute(consoleOutput, 10);
             cout << "\t\t\t\t" << logo[i] << endl;
-            SetConsoleTextAttribute(consoleOutput, 15); 
+            SetConsoleTextAttribute(consoleOutput, 15);
         }
     }
     static void OkrasLogoAuthor(char logo[][100])
     {
-        
         HANDLE consoleOutput;
         consoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 
         for (int i = 0; i < 6; i++)
         {
-            SetConsoleTextAttribute(consoleOutput, 2); 
+            SetConsoleTextAttribute(consoleOutput, 2);
             cout << "\t" << logo[i] << endl;
-            SetConsoleTextAttribute(consoleOutput, 15); 
+            SetConsoleTextAttribute(consoleOutput, 15);
         }
         for (int i = 6; i < 14; i++)
         {
-            SetConsoleTextAttribute(consoleOutput, 9); 
+            SetConsoleTextAttribute(consoleOutput, 9);
             cout << "\t" << logo[i] << endl;
-            SetConsoleTextAttribute(consoleOutput, 15); 
+            SetConsoleTextAttribute(consoleOutput, 15);
         };
     }
     static void OkrasWinnerRed(char logo[][100]) {
@@ -89,7 +84,6 @@ public:
     }
     static void OkrasWinnerGreen(char logo[][100])
     {
-
         HANDLE consoleOutput;
         consoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -100,24 +94,23 @@ public:
         }
     }
 
-   
+
     static void LogoTank()
     {
-        
         char Logo[15][100] = {
-            " #######     ###        ##      ##   ##   ##           #############                         ",
-            "   ##      ##   ##     # ##    ##   ##  ##           ####################################### ",
-            "  ##     ## ### ##    ##  ##  ##   ## ##            ##################                       ",
-            " ##    ## ##### ##   ##    # ##   ##   ##       ###########################                  ",
-            "##   ##         ##  ##      ##   ##     ##    #################################              ",
-            "                                             #***O*******O*******O*******O****#              ",
-            "                                              #***O*****O*******O*******O****#               ",
-            "                                               ##############################                ",
-            "                    ######          ###     #######  #######  ##        ######               ",
-            "                   ##    ##       ##   ##     ##       ##    ##        ##                    ",
-            "                  ########      ## ### ##    ##       ##    ##        #####                  ",
-            "                 ##      ##   ## ##### ##   ##       ##    ##        ##                      ",
-            "                ##########  ##         ##  ##       ##    ########  ######                   ",
+             " #######     ###        ##      ##   ##   ##           #############                         ",
+             "   ##      ##   ##     # ##    ##   ##  ##           ####################################### ",
+             "  ##     ## ### ##    ##  ##  ##   ## ##            ##################                       ",
+             " ##    ## ##### ##   ##    # ##   ##   ##       ###########################                  ",
+             "##   ##         ##  ##      ##   ##     ##    #################################              ",
+             "                                             #***O*******O*******O*******O****#              ",
+             "                                              #***O*****O*******O*******O****#               ",
+             "                                               ##############################                ",
+             "                    ######          ###     #######  #######  ##        ######               ",
+             "                   ##    ##       ##   ##     ##       ##    ##        ##                    ",
+             "                  ########      ## ### ##    ##       ##    ##        #####                  ",
+             "                 ##      ##   ## ##### ##   ##       ##    ##        ##                      ",
+             "                ##########  ##         ##  ##       ##    ########  ######                   ",
         };
         OkrasLogoTank(Logo);
     }
@@ -129,7 +122,6 @@ public:
             " ***    *     *   *   *****    *   ",
             "   *    *    * *** *  *  *     *   ",
             " ***    *   *       * *    *   *   ",
-
         };
         if (color == 0)
         {
@@ -147,7 +139,6 @@ public:
             "  *   *   *       *   *   * *** * *     * *****  ***  ",
             " * *** *   *     *    *   *     *  *   *  * *      *  ",
             "*       *   * * *     *   *     *   ***   *   *  ***  ",
-
         };
         if (color == 0)
         {
@@ -182,7 +173,6 @@ public:
             "****    *     *    *   ",
             "*     *   *   *    *   ",
             "**** *     *  *    *   ",
-
         };
         if (color == 0)
         {
@@ -209,7 +199,6 @@ public:
             "##  ####   ##  ##  ##  ## ##  ##  ## ##  ######  ######  ## ",
             "## ##  ##  ##  ##  ##   ####  ##   ####  ##      ## ##      ",
             "####     ####  ##  ##    ###  ##    ###  ######  ##  ##  ## ",
-
         };
         if (color == 2)
         {
@@ -220,7 +209,7 @@ public:
         }
     }
 
-   
+
     static int  Menu()
     {
         int menuCurs = 1;
@@ -312,7 +301,7 @@ public:
         } while (perehod != 13);
         return menuCurs;
     }
-  
+
     static void LogoSergeyOlisov()
     {
         char SergeyOlisov[14][100] = {
@@ -370,6 +359,4 @@ public:
         };
         OkrasLogoAuthor(liaRyazantsev);
     }
- 
 };
-
