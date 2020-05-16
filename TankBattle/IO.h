@@ -118,25 +118,50 @@ public:
     static void ShowMineStat(Tank tank, Mine mine)
     {
         cout << "Tank - " << tank.GetName() << " Have damage - " << mine.GetDamageMine() << " By mine!!! " << " HP " << tank.GetName() << " = " << tank.GetHP() << endl;
-        system("pause");
+        PauseScrean(); 
     }
 
     static void ShowShot(int damage, Tank tank1, Tank tank2)
     {
         cout << tank1.GetName() << " Good shot !!!" << "\n";
         cout << "Tank - " << tank2.GetName() << " Have damage - " << damage << " .HP " << tank2.GetName() << "= " << tank2.GetHP() << "\n";
-        system("pause");
+        PauseScrean();
 
     }
     static void CtiticalDamageIO()
     {
         cout << "!!!Critical damage!!!" << endl;
-        system("pause");
+        PauseScrean();
     }
     static void MissIo()
     {
         cout << "Yoy are Miss" << endl;
+        PauseScrean();
+    }
+
+    static void HealStat(Tank tank)
+    {
+        cout << "Your HP =" << tank.GetHP() << " After heal " << endl;
+        PauseScrean();
+    }
+    static void HealStatWait(Heal heal)
+    {
+        cout << "The ability will be accessed after " << heal.GetCounter()<<" turns" << endl;
+        PauseScrean();
+    }
+    static void MineStatWait()
+    {
+        cout << "The Mine will be accessed on the next turn" << endl;
+        PauseScrean();
+    }
+    static void PauseScrean()
+    {
         system("pause");
     }
+    static void ClearScrean()
+    {
+        system("cls");
+    }
+
 
 };

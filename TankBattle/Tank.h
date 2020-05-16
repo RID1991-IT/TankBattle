@@ -1,8 +1,8 @@
 ﻿#pragma once
 #include <string>
 using namespace std;
-#include<stdlib.h>
-#include<time.h> 
+#include <stdlib.h>
+#include <time.h> 
 #include <stdio.h>
 #include <Windows.h>
 #include "Board.h"
@@ -65,6 +65,10 @@ public:
         if (GetCoordinateX() == board.SIZEBOARD - 1 || board.GetCoordinate(GetCoordinateX() + 1, GetCoordinateY()) == 'X')
         {
             board.SetCoordinate(GetCoordinateX(), GetCoordinateY(), 'T');
+            if(board.GetCoordinate(GetCoordinateX() + 1, GetCoordinateY()) == 'X')
+            {
+                hp -= 2;
+			}
         }
         else if (GetCoordinateX() < board.SIZEBOARD - 1)
         {
@@ -77,6 +81,10 @@ public:
         if (GetCoordinateX() == 0 || board.GetCoordinate(GetCoordinateX() - 1, GetCoordinateY()) == 'X')
         {
             board.SetCoordinate(GetCoordinateX(), GetCoordinateY(), 'T');
+            if(board.GetCoordinate(GetCoordinateX() - 1, GetCoordinateY()) == 'X')
+            {
+                hp -= 2;
+			}
         }
         else if (GetCoordinateX() > 0)
         {
@@ -89,6 +97,10 @@ public:
         if (GetCoordinateY() == board.SIZEBOARD - 1 || board.GetCoordinate(GetCoordinateX(), GetCoordinateY() + 1) == 'X')
         {
             board.SetCoordinate(GetCoordinateX(), GetCoordinateY(), 'T');
+            if(board.GetCoordinate(GetCoordinateX(), GetCoordinateY() + 1) == 'X')
+            {
+                hp -= 2;
+			}
         }
         else if (GetCoordinateY() < board.SIZEBOARD - 1)
         {
@@ -101,6 +113,10 @@ public:
         if (GetCoordinateY() == 0 || board.GetCoordinate(GetCoordinateX(), GetCoordinateY() - 1) == 'X')
         {
             board.SetCoordinate(GetCoordinateX(), GetCoordinateY(), 'T');
+            if(board.GetCoordinate(GetCoordinateX(), GetCoordinateY() - 1) == 'X')
+            {
+                hp -= 2;
+			}
         }
         else if (GetCoordinateY() > 0)
         {

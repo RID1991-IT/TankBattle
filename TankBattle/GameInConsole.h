@@ -4,7 +4,7 @@
 class GameInConsole :IO
 {
 public:
-    static void FirstInicialization(Tank& tank1,Tank& tank2,Board& boardMine1, Board& boardMine2)
+    static void FirstInicialization(Tank& tank1, Tank& tank2, Board& boardMine1, Board& boardMine2)
     {
         tank1.SetPullHp(99);
         tank2.SetPullHp(99);
@@ -19,7 +19,7 @@ public:
     {
         for (int i = tankPlayer1.GetPlayerActionPoints(); i > 0; i--)
         {
-            system("cls");
+            ClearScrean();
             board1.ClearBoard();
             board2.ClearBoard();
             if (changed == 1)
@@ -62,10 +62,27 @@ public:
                 }
                 break;
             case 'm':
-                MoveMine(mine, board1, board2, boardMine2, tankPlayer1, tankPlayer2, tankPlayer1.GetPlayerIndex());
+                if(mine.GetCounter() == 0)
+                {
+                    MoveMine(mine, board1, board2, boardMine2, tankPlayer1, tankPlayer2, tankPlayer1.GetPlayerIndex());
+				}
+                else
+                {
+                    MineStatWait();
+                    i++;
+				}
                 break;
             case 'h':
-                HealTank(tankPlayer1, heal);
+                if (HealTank(tankPlayer1, heal))
+                {
+                    HealStat(tankPlayer1);
+                }
+                else
+                {
+                    HealStatWait(heal);
+                    i++;
+                }
+                
                 break;
             case 32:
                 if (CheckShot(tankPlayer1, tankPlayer2))
@@ -86,7 +103,8 @@ public:
                 break;
             }
         }
-
+        heal.Countdown();
+        mine.Countdown();
     }
     static void MoveMine(Mine& mine, Board& boardMovedPlayer, Board& boardEnemy, Board& boardMine, Tank& tankMovedPlayer, Tank& tankEnemy, int changed)
     {
@@ -96,7 +114,7 @@ public:
         {
             boardEnemy.ClearBoard();
             boardMovedPlayer.ClearBoard();
-            system("cls");
+            ClearScrean();
 
             if (changed == 1)
             {
@@ -154,34 +172,28 @@ public:
                     break;
                 case 13:
                     boardMine.SetCoordinate(mine.GetCoordinateX(), mine.GetCoordinateY(), '*');
+                    mine.ActivateCounter();
                 }
             }
         } while (move != 13);
     }
-    static void HealTank(Tank& tank, Heal& heal)
+  
+    static bool HealTank(Tank& tank, Heal& heal)
     {
         if (heal.GetCounter() > 0)
         {
-            cout << "Wait for reload your Heal " << heal.GetCounter() << endl;
+            return false;
         }
         else
         {
-            char move;
-            cout << "Heal you tank? y - yes, n - no" << endl;
-            cin >> move;
-            switch (move)
-            {
-            case 'y':
-                tank.SetHealHP(heal.GetHeal());
-                heal.SetCounter();
-                cout << "Your HP =" << tank.GetHP() << " After heal " << endl;
-
-                break;
-            default:
-                break;
-            }
+            tank.SetHealHP(heal.GetHeal());
+            heal.SetCounter();
+            return true;
         }
+
+
     }
+
     static bool CheckShot(Tank& attack, Tank& defence)
     {
         if (attack.GetCoordinateY() == defence.GetCoordinateY())
@@ -194,5 +206,29 @@ public:
         else
             return false;
     }
+
+    static bool CheckWin(Tank tank1, Tank tank2)
+    {
+        if (tank2.GetHP() <= 0 || tank1.GetHP() <= 0)
+        {
+            if (tank2.GetHP() <= 0)
+            {
+                ClearScrean();
+                Logo::LogoWinner(tank1.GetPlayerIndex());
+                PauseScrean();
+            }
+            else if (tank1.GetHP() <= 0)
+            {
+                ClearScrean();
+                Logo::LogoWinner(tank2.GetPlayerIndex());
+                PauseScrean();
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+   }
 
 };

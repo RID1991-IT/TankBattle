@@ -14,7 +14,7 @@ public:
     Mine() {}
     void ActivateCounter()
     {
-        counter = 5;
+        counter = 1;
     }
     void Countdown()
     {

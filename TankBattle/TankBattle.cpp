@@ -42,37 +42,18 @@ int main()
             {
                 //player1 play
                 GameInConsole::PlayerGameIO(tank1, tank2, board1, board2, boardMine1, boardMine2, mine, heal1, tank1.GetPlayerIndex());
+                if (GameInConsole::CheckWin(tank1, tank2))
+                {
+                    break;
+                }
 
-                if (tank2.GetHP() <= 0)
-                {
-                    system("cls");
-                    Logo::LogoWinner(tank1.GetPlayerIndex());
-                    system("pause");
-                    break;
-                }
-                else if (tank1.GetHP() <= 0)
-                {
-                    system("cls");
-                    Logo::LogoWinner(tank2.GetPlayerIndex());
-                    system("pause");
-                    break;
-                }
                 //player2 play
                 GameInConsole::PlayerGameIO(tank2, tank1, board2, board1, boardMine2, boardMine1, mine, heal2, tank2.GetPlayerIndex());
-                if (tank2.GetHP() <= 0)
+                if (GameInConsole::CheckWin(tank1, tank2))
                 {
-                    system("cls");
-                    Logo::LogoWinner(tank1.GetPlayerIndex());
-                    system("pause");
                     break;
                 }
-                else if (tank1.GetHP() <= 0)
-                {
-                    system("cls");
-                    Logo::LogoWinner(tank2.GetPlayerIndex());
-                    system("pause");
-                    break;
-                }
+
             }
         }
         else if (check == 2)
@@ -88,11 +69,6 @@ int main()
         else if (check == 3)
         {
 
-            Logo::test();
-            system("pause");
-            /*system("cls");
-            Logo::LogoRules();
-            system("pause");*/
         }
         else if (check == 4)
         {
