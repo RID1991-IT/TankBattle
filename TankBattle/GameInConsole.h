@@ -113,9 +113,7 @@ public:
                 boardMovedPlayer.TempBoard(tankMovedPlayer.GetCoordinateX(), tankMovedPlayer.GetCoordinateY(), 'T');
                 boardEnemy.TempBoard(mine.GetCoordinateX(), mine.GetCoordinateY(), '*');
                 Interface(boardEnemy, boardMovedPlayer, tankEnemy, tankMovedPlayer, 0, 0);
-
             }
-
             if (changed == 1)
             {
                 move = _getch();
@@ -178,7 +176,6 @@ public:
 
 
     }
-
     static bool CheckShot(Tank& attack, Tank& defence)
     {
         if (attack.GetCoordinateY() == defence.GetCoordinateY())
@@ -215,5 +212,4 @@ public:
             return false;
         }
     }
-
 };

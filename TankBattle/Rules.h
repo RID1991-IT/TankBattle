@@ -13,7 +13,6 @@ using namespace std;
 class Rules
 {
 public:
-
     static void ShowRules()
 
     {

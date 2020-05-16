@@ -16,8 +16,7 @@ class IO
 public:
     static void ShowBoard(Board board, Tank tank)
     {
-
-        board.TempBoard(tank.GetCoordinateX(), tank.GetCoordinateY(), 'T');
+board.TempBoard(tank.GetCoordinateX(), tank.GetCoordinateY(), 'T');
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         cout << "\t\t\t|\t\t-----------\t\t|" << endl;
         for (int i = 0; i < board.SIZEBOARD; i++)
@@ -41,12 +40,10 @@ public:
                 }
                 else if (board.GetCoordinate(i, j) == '*')
                 {
-
-                    SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
+SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
                     cout << board.GetCoordinate(i, j);
                     SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
                     cout << "|";
-
                 }
                 else if (board.GetCoordinate(i, j) == 'X')
                 {
@@ -54,8 +51,6 @@ public:
                     cout << board.GetCoordinate(i, j);
                     SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
                     cout << "|";
-
-
                 }
                 else
                 {
@@ -64,7 +59,6 @@ public:
                     SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
                     cout << "|";
                 }
-
             }
             cout << "\t\t|";
             cout << "\n";
@@ -110,23 +104,18 @@ public:
             cout << "\t\t\t\t\t" << tank2.GetName() << " Move " << endl;
             cout << "\t\t\t\t   You have -" << actionPoints << " action points " << endl;
             SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15));
-
         }
-
     }
-
     static void ShowMineStat(Tank tank, Mine mine)
     {
         cout << "Tank - " << tank.GetName() << " Have damage - " << mine.GetDamageMine() << " By mine!!! " << " HP " << tank.GetName() << " = " << tank.GetHP() << endl;
         PauseScrean(); 
     }
-
     static void ShowShot(int damage, Tank tank1, Tank tank2)
     {
         cout << tank1.GetName() << " Good shot !!!" << "\n";
         cout << "Tank - " << tank2.GetName() << " Have damage - " << damage << " .HP " << tank2.GetName() << "= " << tank2.GetHP() << "\n";
         PauseScrean();
-
     }
     static void CtiticalDamageIO()
     {
@@ -138,7 +127,6 @@ public:
         cout << "Yoy are Miss" << endl;
         PauseScrean();
     }
-
     static void HealStat(Tank tank)
     {
         cout << "Your HP =" << tank.GetHP() << " After heal " << endl;
@@ -162,6 +150,4 @@ public:
     {
         system("cls");
     }
-
-
 };

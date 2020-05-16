@@ -20,9 +20,7 @@ private:
     int playerIndex;
     int actionPoits = 3;
 public:
-   
-
-    Tank(string name, int hp, int damage, int initiative, int playerIndex, int x, int y) 
+    Tank(string name, int hp, int damage, int initiative, int playerIndex, int x, int y)
     {
         this->name = name;
         this->hp = hp;
@@ -37,12 +35,10 @@ public:
     {
         hp = health;
     }
-
-    void SetHP(int damage) 
+    void SetHP(int damage)
     {
         hp -= damage;
     }
-   
     void SetHealHP(int heal)
     {
         hp += heal;
@@ -51,7 +47,6 @@ public:
             hp = 100;
         }
     }
-   
     int GetHP()
     {
         return hp;
@@ -70,12 +65,10 @@ public:
             return probability;
         }
     }
-   
     string GetName()
     {
         return name;
     }
-   
     int GetCoordinateX()
     {
         return coordinateX;
@@ -99,7 +92,6 @@ public:
     int GetPlayerActionPoints()
     {
         return actionPoits;
-
     }
     //движение танка
     void MoveDown(Board& board)
@@ -216,5 +208,4 @@ public:
     {
         return ongoingInitiative;
     }
-
 };
