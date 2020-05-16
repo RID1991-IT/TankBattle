@@ -10,9 +10,9 @@ ___
  **Консольная игра для Windows «Tank Battle» написанная на языке C++ и рассчитанна на двоих игроков.** 
 ___
 ### Авторы:
-+ [**© Олисов Сергей\(SergeyOlisov\)**](https://github.com/RID1991-IT)
++ [**© Олисов Сергей\(SergeyOlisov\)**](https://github.com/SergeyOlisov)
 + [**© Рязанцев Илья\(RID1991-IT\)**](https://github.com/RID1991-IT)
-+ [**© Присяжных Сергей\(Sergey-Prisyzhnykh-IT\)**](https://github.com/RID1991-IT)
++ [**© Присяжных Сергей\(Sergey-Prisyzhnykh-IT\)**](https://github.com/Sergey-Prisyzhnykh-IT)
 ___
 ### Процесс игры:
 ![Alt-текст](img/GIF.gif)
