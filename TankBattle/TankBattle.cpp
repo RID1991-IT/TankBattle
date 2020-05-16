@@ -45,14 +45,14 @@ int main()
                 if (tank2.GetHP() <= 0)
                 {
                     system("cls");
-                    Logo::LogoWiner(tank1.GetPlayerIndex());
+                    Logo::LogoWinner(tank1.GetPlayerIndex());
                     system("pause");
                     break;
                 }
                 else if (tank1.GetHP() <= 0)
                 {
                     system("cls");
-                    Logo::LogoWiner(tank2.GetPlayerIndex());
+                    Logo::LogoWinner(tank2.GetPlayerIndex());
                     system("pause");
                     break;
                 }
@@ -61,14 +61,14 @@ int main()
                 if (tank2.GetHP() <= 0)
                 {
                     system("cls");
-                    Logo::LogoWiner(tank1.GetPlayerIndex());
+                    Logo::LogoWinner(tank1.GetPlayerIndex());
                     system("pause");
                     break;
                 }
                 else if (tank1.GetHP() <= 0)
                 {
                     system("cls");
-                    Logo::LogoWiner(tank2.GetPlayerIndex());
+                    Logo::LogoWinner(tank2.GetPlayerIndex());
                     system("pause");
                     break;
                 }

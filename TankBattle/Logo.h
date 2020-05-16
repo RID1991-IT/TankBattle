@@ -75,6 +75,29 @@ public:
             SetConsoleTextAttribute(consoleOutput, 15); 
         };
     }
+    static void OkrasWinnerRed(char logo[][100]) {
+        HANDLE consoleOutput;
+        consoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
+
+
+        for (int i = 0; i < 14; i++) {
+            SetConsoleTextAttribute(consoleOutput, 12);
+            cout << "\t\t" << logo[i] << endl;
+            SetConsoleTextAttribute(consoleOutput, 15);
+        }
+    }
+    static void OkrasWinnerGreen(char logo[][100])
+    {
+
+        HANDLE consoleOutput;
+        consoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
+
+        for (int i = 0; i < 14; i++) {
+            SetConsoleTextAttribute(consoleOutput, 10);
+            cout << "\t\t" << logo[i] << endl;
+            SetConsoleTextAttribute(consoleOutput, 15);
+        }
+    }
 
    
     static void LogoTank()
@@ -168,9 +191,18 @@ public:
             OkrasMenuRed(Exit);
         }
     }
-    static void LogoWiner(int color)
+    static void LogoWinner(int color)
     {
-        char Exit[5][100] = {
+        char Winner[14][100] = {
+            "                    #############                         ",
+            "                  ####################################### ",
+            "                 ##################                       ",
+            "             ###########################                  ",
+            "           #################################              ",
+            "          #***O*******O*******O*******O****#              ",
+            "           #***O*****O*******O*******O****#               ",
+            "            ##############################                ",
+            "                                                          ",
             "##         ##  ##  ####   ##  ####   ##  ######  ######  ## ",
             "##         ##  ##  ## ##  ##  ## ##  ##  ##      ##  ##  ## ",
             "##  ####   ##  ##  ##  ## ##  ##  ## ##  ######  ######  ## ",
@@ -180,10 +212,10 @@ public:
         };
         if (color == 2)
         {
-            OkrasMenuGreen(Exit);
+            OkrasWinnerGreen(Winner);
         } if (color == 1)
         {
-            OkrasMenuRed(Exit);
+            OkrasWinnerRed(Winner);
         }
     }
 
