@@ -13,6 +13,7 @@ using namespace std;
 
 int main()
 {
+    setlocale(LC_ALL, "ru");
     system("title TANK BATTLE");
 
     Tank tank1("_PLayer_1", 99, 6, 10, 1, 1, 1);
@@ -86,9 +87,12 @@ int main()
         }
         else if (check == 3)
         {
-            system("cls");
-            Logo::LogoRules();
+
+            Logo::test();
             system("pause");
+            /*system("cls");
+            Logo::LogoRules();
+            system("pause");*/
         }
         else if (check == 4)
         {

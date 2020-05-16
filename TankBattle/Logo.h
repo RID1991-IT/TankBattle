@@ -1,4 +1,4 @@
-п»ї#pragma once
+#pragma once
 #include <iostream>
 #include <string>
 #include "Mine.h"
@@ -12,9 +12,10 @@ using namespace std;
 
 class Logo
 {
+    
 public:
   
-    static void OkrasLogoTank(char logo[][100])//С‚РµСЃС‚
+    static void OkrasLogoTank(char logo[][100])
     {
        
         HANDLE consoleOutput;
@@ -369,12 +370,25 @@ public:
         };
         OkrasLogoAuthor(liaRyazantsev);
     }
-    static void LogoRules()
+  /*  static void LogoRules()
     {
         char Rules[14][100] = {
-            "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ  ",
+            
         };
         OkrasMenuRed(Rules);
+    }*/
+    static void test()
+    {
+        cout << "Тест тетст тест тест";
+        cout << "Тест тетст тест тест";
+        cout << "Тест тетст тест тест";
+        cout << "Тест тетст тест тест";
+        cout << "Тест тетст тест тест";
+        cout << "Тест тетст тест тест";
+        cout << "Тест тетст тест тест";
+       
+        
+
     }
 
 };
