@@ -151,6 +151,7 @@ public:
                     break;
                 case 13:
                     boardMine.SetCoordinate(mine.GetCoordinateX(), mine.GetCoordinateY(), '*');
+                    mine.ActivateCounter();
                 }
             }
             else if (changed == 2)

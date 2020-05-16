@@ -18,7 +18,8 @@ int main()
 
     Tank tank1("_PLayer_1", 99, 6, 10, 1, 1, 1);
     Tank tank2("_Looper_2", 99, 6, 10, 2, 3, 3);
-    Mine mine;
+    Mine mine1;
+    Mine mine2;
     Heal heal1;
     Heal heal2;
     Board board1;
@@ -41,14 +42,14 @@ int main()
             while (tank1.GetHP() >= 0 && tank2.GetHP() >= 0)
             {
                 //player1 play
-                GameInConsole::PlayerGameIO(tank1, tank2, board1, board2, boardMine1, boardMine2, mine, heal1, tank1.GetPlayerIndex());
+                GameInConsole::PlayerGameIO(tank1, tank2, board1, board2, boardMine1, boardMine2, mine1, heal1, tank1.GetPlayerIndex());
                 if (GameInConsole::CheckWin(tank1, tank2))
                 {
                     break;
                 }
 
                 //player2 play
-                GameInConsole::PlayerGameIO(tank2, tank1, board2, board1, boardMine2, boardMine1, mine, heal2, tank2.GetPlayerIndex());
+                GameInConsole::PlayerGameIO(tank2, tank1, board2, board1, boardMine2, boardMine1, mine2, heal2, tank2.GetPlayerIndex());
                 if (GameInConsole::CheckWin(tank1, tank2))
                 {
                     break;
