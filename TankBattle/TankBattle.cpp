@@ -6,6 +6,7 @@
 #include "IO.h"
 #include "Logo.h"
 #include "GameInConsole.h"
+#include "Rules.h"
 #include <conio.h>
 #include <stdio.h>
 #include <Windows.h>
@@ -69,7 +70,7 @@ int main()
         }
         else if (check == 3)
         {
-
+            Rules::ShowRules();
         }
         else if (check == 4)
         {
