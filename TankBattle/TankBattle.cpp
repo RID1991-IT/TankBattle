@@ -30,7 +30,7 @@ int main()
     HWND hwnd;
     char Title[1024];
     hwnd = GetConsoleWindow();
-    MoveWindow(hwnd, 500, 30, 850, 1000, TRUE);//xnew,ynew,wnew,hnew -новые положение x,y, ширина и высота
+    MoveWindow(hwnd, 500, 30, 850, 950, TRUE);//xnew,ynew,wnew,hnew -новые положение x,y, ширина и высота
     int check = 0;
     bool end = true;
     do
