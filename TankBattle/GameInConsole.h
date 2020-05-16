@@ -35,42 +35,26 @@ public:
             {
             case 's':
                 tankPlayer1.MoveDown(board1);
-                if (mine.CheckMine(boardMine1, tankPlayer1, tankPlayer2.GetCoordinateX(), tankPlayer1.GetCoordinateY()))
-                {
-                    ShowMineStat(tankPlayer1, mine);
-                }
-                break;
+                if (mine.CheckMine(boardMine1, tankPlayer1, tankPlayer1.GetCoordinateX(), tankPlayer1.GetCoordinateY())) { ShowMineStat(tankPlayer1, mine); } break;
             case 'w':
                 tankPlayer1.MoveUp(board1);
-                if (mine.CheckMine(boardMine1, tankPlayer1, tankPlayer1.GetCoordinateX(), tankPlayer1.GetCoordinateY()))
-                {
-                    ShowMineStat(tankPlayer1, mine);
-                }
-                break;
+                if (mine.CheckMine(boardMine1, tankPlayer1, tankPlayer1.GetCoordinateX(), tankPlayer1.GetCoordinateY())) { ShowMineStat(tankPlayer1, mine); } break;
             case 'a':
                 tankPlayer1.MoveLeft(board1);
-                if (mine.CheckMine(boardMine1, tankPlayer1, tankPlayer1.GetCoordinateX(), tankPlayer1.GetCoordinateY()))
-                {
-                    ShowMineStat(tankPlayer1, mine);
-                }
-                break;
+                if (mine.CheckMine(boardMine1, tankPlayer1, tankPlayer1.GetCoordinateX(), tankPlayer1.GetCoordinateY())) { ShowMineStat(tankPlayer1, mine); } break;
             case 'd':
                 tankPlayer1.MoveRight(board1);
-                if (mine.CheckMine(boardMine1, tankPlayer1, tankPlayer1.GetCoordinateX(), tankPlayer1.GetCoordinateY()))
-                {
-                    ShowMineStat(tankPlayer1, mine);
-                }
-                break;
+                if (mine.CheckMine(boardMine1, tankPlayer1, tankPlayer1.GetCoordinateX(), tankPlayer1.GetCoordinateY())) { ShowMineStat(tankPlayer1, mine); } break;
             case 'm':
-                if(mine.GetCounter() == 0)
+                if (mine.GetCounter() == 0)
                 {
                     MoveMine(mine, board1, board2, boardMine2, tankPlayer1, tankPlayer2, tankPlayer1.GetPlayerIndex());
-				}
+                }
                 else
                 {
                     MineStatWait();
                     i++;
-				}
+                }
                 break;
             case 'h':
                 if (HealTank(tankPlayer1, heal))
@@ -82,7 +66,7 @@ public:
                     HealStatWait(heal);
                     i++;
                 }
-                
+
                 break;
             case 32:
                 if (CheckShot(tankPlayer1, tankPlayer2))
@@ -178,7 +162,7 @@ public:
             }
         } while (move != 13);
     }
-  
+
     static bool HealTank(Tank& tank, Heal& heal)
     {
         if (heal.GetCounter() > 0)
@@ -230,6 +214,6 @@ public:
         {
             return false;
         }
-   }
+    }
 
 };

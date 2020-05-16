@@ -370,14 +370,6 @@ public:
         };
         OkrasLogoAuthor(liaRyazantsev);
     }
-  /*  static void LogoRules()
-    {
-        char Rules[14][100] = {
-            
-        };
-        OkrasMenuRed(Rules);
-    }*/
-   
-
+ 
 };
 
