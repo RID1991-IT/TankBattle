@@ -1,3 +1,5 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/itstep-vrn/tankbattle/badge/class-game-realization)](https://www.codefactor.io/repository/github/itstep-vrn/tankbattle/overview/class-game-realization)
+
 ![Alt-текст](img/Logo.JPG)
 
 + **Год выпуска: 2020**
