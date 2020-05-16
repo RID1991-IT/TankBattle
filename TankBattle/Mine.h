@@ -27,14 +27,11 @@ public:
     void SetCoordinateMineX(int x)
     {
         coordinateX = x;
-
     }
     void SetCoordinateMineY(int y)
     {
         coordinateY = y;
-
     }
-
     int GetDamageMine()
     {
         return damageMine;
@@ -51,7 +48,6 @@ public:
     {
         return coordinateY;
     }
-
     void MoveDown(Board& board)
     {
         if (GetCoordinateX() == board.SIZEBOARD - 1 || board.GetCoordinate(GetCoordinateX() + 1, GetCoordinateY()) == 'X')
@@ -102,7 +98,6 @@ public:
     }
     bool CheckMine(Board& boardDefenceMine, Tank& tankDefence, int x, int y)
     {
-
         if (boardDefenceMine.GetCoordinate(x, y) == '*')
         {
             tankDefence.SetHP(GetDamageMine());
