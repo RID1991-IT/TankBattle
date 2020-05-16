@@ -14,9 +14,9 @@ ___
 + Побеждает игрок который первый отнимет все очки прочности (HP) у соперника. 
 ___
 ### Авторы:
-![Alt-текст](SergeyOlisow.JPG)
+![Alt-текст](img/SergeyOlisow.JPG)
 ___
 
-![Alt-текст](Ilia.JPG)
+![Alt-текст](img/Ilia.JPG)
 ___
-![Alt-текст](SergeyPris.JPG)
+![Alt-текст](img/SergeyPris.JPG)
