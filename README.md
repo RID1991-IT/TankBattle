@@ -23,11 +23,30 @@ ___
 + На полях обоих игроков расположены противотанковые ежи, если игрок врезается в это препятствие, то у него отнимается 1 очко действие и 2 единицы прочности танка(-2HP). 
 + Побеждает игрок который первый отнимет все очки прочности (HP) у соперника. 
 ___
-### Авторы:
-
 ![Alt-текст](img/SergeyOlisow.JPG)
 ___
-
 ![Alt-текст](img/Ilia.JPG)
 ___
 ![Alt-текст](img/SergeyPris.JPG)
+### <a name="Get">Начало работы:</a>
+
+Скопируйте файл .exe в любое место на вашем компьютере. Если у вас установлена программа Visual Studio, игра запустится.  
+Если программа Visual Studio не установлена, система может запросить следующие файлы: msvcp140d.dll, vcruntime140.dll, ucrtbased.dll —  это компоненты пакета от корпорации Microsoft Visual C++ 2015.  
+Скачайте данные файлы и разместите в корневой директории windows:  
+- C:\Windows\System32 для x32 системы;
+- C:\Windows\SysWOW64 для x64 системы.  
+Перезагрузите компьютер и запустите программу.
+
+***Скачать файлы для Windows 10 и других версий можно пройдя по ссылкам:***  
+
+Для x64:  
+
+- [msvcp140d.dll](http://dlltop.ru//files/msvcp140d-64.zip)  
+-	[vcruntime140.dll](http://dlltop.ru//files/vcruntime140-64.zip)  
+-	[ucrtbased.dll](http://dlltop.ru//files/ucrtbase-64.zip )  
+
+Для x32: 
+
+-	[msvcp140d.dll](http://dlltop.ru//files/msvcp140d.zip)  
+-	[vcruntime140.dll](http://dlltop.ru//files/vcruntime140.zip)  
+-	[ucrtbased.dll](http://dlltop.ru//files/ucrtbase.zip)  
